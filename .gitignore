@@ -1,0 +1,68 @@
+# Node modules (if used at any point)
+node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+env/
+venv/
+gui-env/
+semantic-rag-env/
+
+# Jupyter notebooks checkpoint files (if you ever use them)
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor specific files
+.vscode/
+.idea/
+
+# Python environment/config files
+*.egg-info/
+*.eggs/
+pip-wheel-metadata/
+*.env
+.env/
+
+# Compiled binaries
+*.so
+
+# Test results
+*.coverage
+.cache/
+
+# Distribution / packaging
+dist/
+build/
+
+# Local runtime files
+*.pid
+*.swp
+*.bak
+*.tmp
+
+# pyenv and pipenv files (if not needed in Git)
+python-version
+pipenv.lock
+
+# VS Code workspace storage
+.vscode/
+
+# MacOS specific
+.DS_Store
+
+# Coverage reports
+htmlcov/
+coverage.xml
+
+# Others
+*.sqlite3

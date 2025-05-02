@@ -1,0 +1,1844 @@
+{
+    "aggressivePrune": true,
+    "clickElementsCssSelector": "[aria-expanded=\"false\"]",
+    "clientSideMinChangePercentage": 15,
+    "crawlerType": "playwright:adaptive",
+    "debugLog": false,
+    "debugMode": false,
+    "expandIframes": true,
+    "ignoreCanonicalUrl": true,
+    "includeUrlGlobs": [
+        {
+            "glob": ""
+        }
+    ],
+    "keepUrlFragments": false,
+    "proxyConfiguration": {
+        "useApifyProxy": true
+    },
+    "readableTextCharThreshold": 100,
+    "removeCookieWarnings": true,
+    "removeElementsCssSelector": "nav, footer, script, style, noscript, svg, img[src^='data:'],\n[role=\"alert\"],\n[role=\"banner\"],\n[role=\"dialog\"],\n[role=\"alertdialog\"],\n[role=\"region\"][aria-label*=\"skip\" i],\n[aria-modal=\"true\"]",
+    "renderingTypeDetectionPercentage": 10,
+    "respectRobotsTxtFile": false,
+    "saveFiles": true,
+    "saveHtml": false,
+    "saveHtmlAsFile": true,
+    "saveMarkdown": true,
+    "saveScreenshots": false,
+    "startUrls": [
+        {
+            "url": "https://docs.pinecone.io/.github/pull_request_template",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/assistant-release-notes/2022",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/assistant-release-notes/2023",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/assistant-release-notes/2024",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/assistant-release-notes/2025",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/assistant-release-notes/feature-availability",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/notebooks",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/reference-architectures",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/sample-apps",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/sample-apps/legal-semantic-search",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/sample-apps/namespace-notes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/sample-apps/pinecone-assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/examples/sample-apps/shop-the-look",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/configure-sso-with-okta",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/create-a-project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-api-keys",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-organization-members",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-organization-service-accounts",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-project-members",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-project-service-accounts",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-projects",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/manage-your-billing-plan",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/monitor-spend-and-usage",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/organizations-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/projects-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/security-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/set-up-billing-through-aws-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/set-up-billing-through-azure-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/admin/set-up-billing-through-gcp-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/chat-through-the-openai-compatible-interface",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/chat-with-assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/context-snippets-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/create-assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/evaluate-answers",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/evaluation-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/files-overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/manage-assistants",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/manage-files",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/mcp-server",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/pricing-and-limits",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/quickstart",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/retrieve-context-snippets",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/assistant/upload-files",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/check-data-freshness",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/create-and-load-private-datasets",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/delete-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/evaluate-search-results",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/fetch-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/import-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/list-record-ids",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/manage-document-chunks",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/query-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/target-an-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/understanding-imports",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/understanding-metadata",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/update-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/upsert-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/use-public-pinecone-datasets",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/data/use-sample-datasets",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/build-a-rag-chatbot",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/glossary",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/key-features",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/quickstart",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/recommender",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/get-started/threat-detection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/back-up-an-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/create-an-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/implement-multitenancy",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/manage-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/manage-namespaces",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/back-up-a-pod-based-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/choose-a-pod-type-and-size",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/create-a-pod-based-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/encode-sparse-vectors",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/manage-pod-based-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/migrate-a-pod-based-index-to-serverless",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/query-sparse-dense-vectors",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/restore-a-pod-based-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/scale-pod-based-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/search-a-pod-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/understanding-collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/understanding-hybrid-search",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/pods/upsert-sparse-dense-vectors",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/restore-an-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/understanding-backups",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/indexes/understanding-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/inference/generate-embeddings",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/inference/integrated-inference",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/inference/rerank",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/inference/understanding-inference",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/automated-testing",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/bring-your-own-cloud",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/configure-audit-logs",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/configure-cmek",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/connect-to-aws-privatelink",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/data-deletion",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/integrations/integrate-with-amazon-s3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/integrations/manage-storage-integrations",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/local-development",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/mcp-server",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/monitoring",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/move-to-production",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/performance-tuning",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/operations/understanding-security",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/configure-single-sign-on/okta",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-billing/manage-your-billing-plan",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-billing/setting-up-billing-through-aws-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-billing/setting-up-billing-through-azure-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-billing/setting-up-billing-through-gcp-marketplace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-cost/manage-cost",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-cost/monitor-your-usage",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-cost/understanding-cost",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-organization-members",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/manage-service-accounts",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/organizations/understanding-organizations",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/create-a-project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/manage-api-keys",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/manage-project-members",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/manage-projects",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/manage-service-accounts",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/guides/projects/understanding-projects",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/airbyte",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/amazon-bedrock",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/amazon-sagemaker",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/anyscale",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/apify",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/aryn",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/aws",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/azure",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/box",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/build-integration/attribute-usage-to-your-integration",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/build-integration/become-a-partner",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/build-integration/connect-your-users-to-pinecone",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/cloudera",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/cohere",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/confluent",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/context-data",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/databricks",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/datadog",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/datavolo",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/estuary",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/fleak",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/flowise",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/gathr",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/gcp",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/genkit",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/github-copilot",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/haystack",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/honeyhive",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/hugging-face-inference-endpoints",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/instill",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/jina",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/langchain",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/langtrace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/llamaindex",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/matillion",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/new-relic",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/nexla",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/nuclia",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/octoai",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/openai",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/pulumi",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/redpanda",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/snowflake",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/streamnative",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/terraform",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/traceloop",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/trulens",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/twelve-labs",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/unstructured",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/vercel",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/integrations/voyage",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/CLIP-ViT-B-32-laion2B-s34B-b79K",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/all-MiniLM-L12-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/all-mpnet-base-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/bge-reranker-v2-m3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/clip",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/cohere-embed-english-light-v3.0",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/cohere-embed-english-v3.0",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/cohere-embed-multilingual-v3.0",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/cohere-rerank-3.5",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/e5-base-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/e5-large-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/gte-base",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/gte-large",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/instructor-large",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/instructor-xl",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/jina-clip-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/jina-embeddings-v2-base-en",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/jina-embeddings-v3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/llama-text-embed-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/marengo-retrieval-2-6",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/mistral-embed",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/multilingual-e5-large",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/overview",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/pinecone-rerank-v0",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/pinecone-sparse-english-v0",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/rerank-2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/rerank-2-lite",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/rerank-english-v2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/text-embedding-3-large",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/text-embedding-3-small",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/text-embedding-ada-002",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-01",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-02",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-3-large",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-3-lite",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-code-2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-code-3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-finance-2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-large-2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-law-2",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-lite-02-instruct",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/models/voyage-multimodal-3",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/configure_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/create_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/create_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/delete_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/delete_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/describe_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/describe_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/list_collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/control-plane/list_indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/delete",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/describeindexstats",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/fetch",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/list",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/query",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/update",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-04/data-plane/upsert",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/configure_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/create_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/create_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/delete_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/delete_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/describe_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/describe_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/list_collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/control-plane/list_indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/delete",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/describeindexstats",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/fetch",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/list",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/query",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/update",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-07/data-plane/upsert",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/configure_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/create_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/create_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/delete_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/delete_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/describe_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/describe_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/list_collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/control-plane/list_indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/cancel_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/delete",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/describe_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/describeindexstats",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/fetch",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/list",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/list_imports",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/query",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/start_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/update",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/data-plane/upsert",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/inference/generate-embeddings",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2024-10/inference/rerank",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/chat_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/chat_completion_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/context_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/create_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/delete_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/delete_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/describe_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/describe_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/list_assistants",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/list_files",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/metrics_alignment",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/update_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/assistant/upload_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/configure_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/create_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/create_for_model",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/create_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/delete_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/delete_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/describe_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/describe_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/list_collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/control-plane/list_indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/cancel_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/delete",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/describe_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/describeindexstats",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/fetch",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/list",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/list_imports",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/query",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/search_records",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/start_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/update",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/upsert",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/data-plane/upsert_records",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/inference/generate-embeddings",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-01/inference/rerank",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/create_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/create_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/delete_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/delete_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/fetch_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/fetch_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/get_token",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/list_api_keys",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/list_projects",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin-assistant/update_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/create_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/create_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/delete_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/delete_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/fetch_api_key",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/fetch_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/get_token",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/list_api_keys",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/list_projects",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/admin/update_project",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/chat_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/chat_completion_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/context_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/create_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/delete_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/delete_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/describe_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/describe_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/list_assistants",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/list_files",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/metrics_alignment",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/update_assistant",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/assistant/upload_file",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/configure_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/create_backup",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/create_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/create_for_model",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/create_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/create_index_from_backup",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/delete_backup",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/delete_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/delete_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/describe_backup",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/describe_collection",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/describe_index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/describe_restore_job",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/list_collections",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/list_index_backups",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/list_indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/list_project_backups",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/control-plane/list_restore_jobs",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/cancel_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/delete",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/deletenamespace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/describe_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/describeindexstats",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/describenamespace",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/fetch",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/list",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/list_imports",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/listnamespaces",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/query",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/search_records",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/start_import",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/update",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/upsert",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/data-plane/upsert_records",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/inference/generate-embeddings",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/2025-04/inference/rerank",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/assistant/assistant-limits",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/assistant/authentication",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/assistant/introduction",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/authentication",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/database-limits",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/errors",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/inference-limits",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/introduction",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/known-limitations",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/api/versioning",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/architecture/assistant-architecture",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/architecture/pod-based-architecture",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/architecture/serverless-architecture",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/dotnet-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/go-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/java-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/node-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/pinecone-sdks",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/python-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/rust-sdk",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/tools/pinecone-datasets",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/tools/pinecone-spark-connector",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/reference/tools/pinecone-text-client",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/release-notes/2022",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/release-notes/2023",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/release-notes/2024",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/release-notes/2025",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/release-notes/feature-availability",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/available-cloud-regions",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/best-practices",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/billing-disputes-and-refunds",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/contact-support",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/cors-issues",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/create-and-manage-vectors-with-metadata",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/custom-data-processing-agreements",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/debug-model-vs-pinecone-recall-issues",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/delete-your-account",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/delete-your-organization",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/differences-between-lexical-semantic-search",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/embedding-values-changed-when-upserted",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/error-cannot-import-name-pinecone",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/error-handshake-read-failed",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/export-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/how-and-when-to-add-replicas",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/how-and-when-to-increase-index-size",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/how-to-work-with-support",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/index-creation-error-max-serverless",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/index-creation-error-missing-spec",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/keep-customer-data-separate",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/limitations-of-querying-by-id",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/login-code-issues",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/metadata-reconfiguration",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/metadata-string-value-returned-as-datetime",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/minimize-latencies",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/module-pinecone-has-no-attribute-init",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/namespaces-vs-metadata-filtering",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/nodejs-troubleshooting",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/non-indexed-field-filter-issues",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/parallel-queries",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/pinecone-attribute-errors-with-langchain",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/pinecone-support-slas",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/pods-are-full",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/remove-metadata-field",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/restrictions-on-index-names",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/return-all-vectors-in-an-index",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/select-index-type-and-size",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/serverless-index-connection-errors",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/unable-to-pip-install",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/use-namespaces-instead-of-several-indexes",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/vertically-downscaling",
+            "method": "GET"
+        },
+        {
+            "url": "https://docs.pinecone.io/troubleshooting/wait-for-index-creation",
+            "method": "GET"
+        }
+    ],
+    "useSitemaps": true
+}

@@ -1,0 +1,1417 @@
+[{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/API/",
+    "title": "Unraid API | Unraid Docs",
+    "description": "The Unraid API provides a GraphQL interface for programmatic interaction with your Unraid server. It enables automation, monitoring, and integration capabilities.",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/API/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Unraid API | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "The Unraid API provides a GraphQL interface for programmatic interaction with your Unraid server. It enables automation, monitoring, and integration capabilities."
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:24 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e15f75f7d3-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=oIapkI4InERRCV1DTVB8ak%2BkChqaYiwq4mczryr2DVsSkaEv22mVKfIg1xx6coIYG573Tk8nwLRwm7TCUQp57LOGJ3bJYQe8AjgujIZ8OKCzDell7Cpi%2BZPo1JNGJa0izHs%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=910&min_rtt=877&rtt_var=269&sent=4&recv=7&lost=0&retrans=0&sent_bytes=808&recv_bytes=1700&delivery_rate=1651083&cwnd=251&unsent_bytes=0&cid=6879cffa534880d8&ts=228&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/API/",
+  "text": "Unraid API | Unraid Docs\nThe Unraid API provides a GraphQL interface for programmatic interaction with your Unraid server. It enables automation, monitoring, and integration capabilities.\nCurrent Availability​\nThe API is available through the Unraid Connect Plugin:\nInstall Unraid Connect Plugin from Apps\nConfigure the plugin\nAccess API functionality through the GraphQL Sandbox\nFuture Availability​\nThe API will be integrated directly into the Unraid operating system in an upcoming OS release. This integration will:\nMake the API a core part of the Unraid system\nRemove the need for separate plugin installation\nEnable deeper system integration capabilities\nDocumentation Sections​\nCLI Commands - Reference for all available command-line interface commands\nUsing the Unraid API - Comprehensive guide on using the GraphQL API\nUpcoming Features - Roadmap of planned features and improvements\nKey Features​\nThe API provides:\nGraphQL Interface: Modern, flexible API with strong typing\nAuthentication: Secure access via API keys or session cookies\nComprehensive Coverage: Access to system information, array management, and Docker operations\nDeveloper Tools: Built-in GraphQL sandbox for testing\nRole-Based Access: Granular permission control\nFor detailed usage instructions, see CLI Commands."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/getting-started/",
+    "title": "Getting started | Unraid Docs",
+    "description": "In this guide, we cover how to prepare your flash device, boot the system, and configure your first array. The entire process should take less than 15 minutes.",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/getting-started/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Getting started | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "In this guide, we cover how to prepare your flash device, boot the system, and configure your first array. The entire process should take less than 15 minutes."
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:24 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e43f56cb85-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=p71HcGa0ylgXdVwgKtzzP1OFwmkdGNgrNqk4m2pMqm9znIqNRFqFa0vu3ebPi2idvQFh4qT8ZlsHCv3dcB2cngJlraI4SaKpsKSQbA0Ci%2BWWmvoiQov2WGleob1dKvCj7mA%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=8279&min_rtt=890&rtt_var=1005&sent=443&recv=77&lost=0&retrans=1&sent_bytes=581542&recv_bytes=3169&delivery_rate=2062226&cwnd=52&unsent_bytes=0&cid=f5ba2f6d135db4a2&ts=814&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/getting-started/",
+  "text": "Getting started | Unraid Docs\nPlan ahead for any containers or VMs you want to add to your Unraid server, consider the hardware requirements for each one. For example, if you add a Windows 11 virtual machine to Unraid, you must meet the minimum requirements for that OS, in addition to those required for Unraid, to maintain functionality.\nVirtual Machines, in particular, require that you have a CPU and chipset combination that supports hardware virtualization. In the enterprise space these are usually identified by the Intel VPro® or AMD Ryzen Pro® badge."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/API/how-to-use-the-api/",
+    "title": "Using the Unraid API | Unraid Docs",
+    "description": "The Unraid API provides a GraphQL interface that allows you to interact with your Unraid server. This guide will help you get started with exploring and using the API.",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/API/how-to-use-the-api/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Using the Unraid API | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "The Unraid API provides a GraphQL interface that allows you to interact with your Unraid server. This guide will help you get started with exploring and using the API."
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:24 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e6dd402af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=EsNOKMOYXU4Aro6gOApnqSsNQMMb13Zhjk5XNV7mfiXw7vUcdAYQFirFqo3MfO9Abu61zKoJjZsQ2UQDhDQDmoZurfPgCLMif%2B71YfuIqZcCWzadCctDGthazYLTQLAiYHc%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=4286&min_rtt=859&rtt_var=4546&sent=83&recv=45&lost=0&retrans=1&sent_bytes=64395&recv_bytes=3086&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=228&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/API/how-to-use-the-api/",
+  "text": "Using the Unraid API | Unraid Docs\nThe Unraid API provides a GraphQL interface that allows you to interact with your Unraid server. This guide will help you get started with exploring and using the API.\nEnabling the GraphQL Sandbox​\nFirst, enable developer mode using the CLI:\nFollow the prompts to enable the sandbox. This will allow you to access the Apollo Sandbox interface.\nAccess the GraphQL playground by navigating to:\nhttp://YOUR_SERVER_IP/graphql\nAuthentication​\nMost queries and mutations require authentication. You can authenticate using either:\nAPI Keys\nCookies (default method when signed into the WebGUI)\nCreating an API Key​\nUse the CLI to create an API key:\nunraid-api apikey --create\nFollow the prompts to set:\nName\nDescription\nRoles\nPermissions\nThe generated API key should be included in your GraphQL requests as a header:\n{\n\"x-api-key\": \"YOUR_API_KEY\"\n}\nAvailable Schemas​\nThe API provides access to various aspects of your Unraid server:\nSystem Information​\nQuery system details including CPU, memory, and OS information\nMonitor system status and health\nAccess baseboard and hardware information\nArray Management​\nQuery array status and configuration\nManage array operations (start/stop)\nMonitor disk status and health\nPerform parity checks\nDocker Management​\nList and manage Docker containers\nMonitor container status\nManage Docker networks\nRemote Access​\nConfigure and manage remote access settings\nHandle SSO configuration\nManage allowed origins\nExample Queries​\nCheck System Status:\nquery {\ninfo {\nos {\nplatform\ndistro\nrelease\nuptime\n}\ncpu {\nmanufacturer\nbrand\ncores\nthreads\n}\n}\nMonitor Array Status:\nquery {\narray {\nstate\ncapacity {\ndisks {\nfree\nused\ntotal\ndisks {\nname\nsize\nstatus\ntemp\nList Docker Containers:\nquery {\ndockerContainers {\nid\nnames\nstate\nstatus\nautoStart\nSchema Types​\nThe API includes several core types:\nBase Types​\nNode: Interface for objects with unique IDs - please see Object Identification\nJSON: For complex JSON data\nDateTime: For timestamp values\nLong: For 64-bit integers\nResource Types​\nArray: Array and disk management\nDocker: Container and network management\nInfo: System information\nConfig: Server configuration\nConnect: Remote access settings\nRole-Based Access​\nAvailable roles:\nadmin: Full access\nconnect: Remote access features\nguest: Limited read access\nBest Practices​\nUse the Apollo Sandbox to explore the schema and test queries\nStart with small queries and gradually add fields as needed\nMonitor your query complexity to maintain performance\nUse appropriate roles and permissions for your API keys\nKeep your API keys secure and rotate them periodically\nRate Limiting​\nThe API implements rate limiting to prevent abuse. Ensure your applications handle rate limit responses appropriately.\nError Handling​\nThe API returns standard GraphQL errors in the following format:\n{\n\"errors\": [\n{\n\"message\": \"Error description\",\n\"locations\": [...],\n\"path\": [...]\n]\nAdditional Resources​\nUse the Apollo Sandbox's schema explorer to browse all available types and fields\nCheck the documentation tab in Apollo Sandbox for detailed field descriptions\nMonitor the API's health using unraid-api status\nGenerate reports using unraid-api report for troubleshooting\nFor more information about specific commands and configuration options, refer to the CLI documentation or run unraid-api --help."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/API/cli/",
+    "title": "CLI Commands | Unraid Docs",
+    "description": "Start",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/API/cli/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "CLI Commands | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Start"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:25 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8ecbc522af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=DeZJ8rdPveh5EiEHbG%2BEGxeCE248ecdKQjoBvlZpZT9q2x3www0Enz5uyapziNA3xZXw4c6eid0mjFkAwrFwR5BaIlCGviAIJmBN6HliI1krNvbybEmrlVSd67oXZPFovvs%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=6347&min_rtt=859&rtt_var=8663&sent=150&recv=77&lost=0&retrans=3&sent_bytes=106569&recv_bytes=4958&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=1141&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/API/cli/",
+  "text": "CLI Commands | Unraid Docs\nStart​\nunraid-api start [--log-level <level>]\nStarts the Unraid API service.\nOptions:\n--log-level: Set logging level (trace|debug|info|warn|error)\nStop​\nunraid-api stop [--delete]\nStops the Unraid API service.\n--delete: Optional. Delete the PM2 home directory\nRestart​\nRestarts the Unraid API service.\nLogs​\nunraid-api logs [-l <lines>]\nView the API logs.\n-l, --lines: Optional. Number of lines to tail (default: 100)\nConfiguration Commands​\nConfig​\nDisplays current configuration values.\nSwitch Environment​\nunraid-api switch-env [-e <environment>]\nSwitch between production and staging environments.\n-e, --environment: Optional. Target environment (production|staging)\nDeveloper Mode​\nConfigure developer features for the API (e.g., GraphQL sandbox).\nAPI Key Management​\nAPI Key Commands​\nunraid-api apikey [options]\nCreate and manage API keys.\nOptions:\n--name <name>: Name of the key\n--create: Create a new key\n-r, --roles <roles>: Comma-separated list of roles\n-p, --permissions <permissions>: Comma-separated list of permissions\n-d, --description <description>: Description for the key\nSSO (Single Sign-On) Management​\nSSO Base Command​\nAdd SSO User​\nunraid-api sso add-user\n# or\nunraid-api sso add\n# or\nunraid-api sso a\nAdd a new user for SSO authentication.\nRemove SSO User​\nunraid-api sso remove-user\n# or\nunraid-api sso remove\n# or\nunraid-api sso r\nRemove a user (or all users) from SSO.\nList SSO Users​\nunraid-api sso list-users\nunraid-api sso list\nunraid-api sso l\nList all configured SSO users.\nValidate SSO Token​\nunraid-api sso validate-token <token>\nunraid-api sso validate\nunraid-api sso v\nValidates an SSO token and returns its status.\nReport Generation​\nGenerate Report​\nunraid-api report [-r] [-j]\nGenerate a system report.\n-r, --raw: Display raw command output\n-j, --json: Display output in JSON format\nNotes​\nMost commands require appropriate permissions to modify system state\nSome commands require the API to be running or stopped\nStore API keys securely as they provide system access\nSSO configuration changes may require a service restart"
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:23 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e07906cb85-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=J0Uxj8EyzxCSfF3vAsDyqkg%2B6h9HaVW8lG8X9AyCzNlkP1F4PUvG7RetNVg3PklopYZHkLPR8W7%2B9urFd28CUbGfJ59eRR4ngI%2FeWAoqoAaSO0R96Z5rNd7BoB0ioXyqVrw%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=5880&min_rtt=895&rtt_var=10140&sent=8&recv=9&lost=0&retrans=0&sent_bytes=3718&recv_bytes=1295&delivery_rate=4075046&cwnd=254&unsent_bytes=0&cid=f5ba2f6d135db4a2&ts=219&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/",
+  "text": "Unraid Docs\nPage Not Found\nWe could not find what you were looking for.\nPlease contact the owner of the site that linked you to the original URL and let them know their link is broken."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/guides/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/guides/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:24 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e6dd442af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=56olFVoAVSVAcB44K95HhMNqdj4hVMkfpveWfxJLaGh3Cxf8T1HvwDUETOV5IReHlwSGZXjzrkBu%2FNsG6nCIL2TevhJ3Q2Sw6W8KK9j%2Br4%2FA6jH%2BR0SC96ixlSoycW8k9ag%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=3466&min_rtt=859&rtt_var=3873&sent=73&recv=43&lost=0&retrans=1&sent_bytes=56865&recv_bytes=2630&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=177&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/guides/",
+  "text": "Unraid Docs\nPage Not Found\nWe could not find what you were looking for.\nPlease contact the owner of the site that linked you to the original URL and let them know their link is broken."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/manual/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/manual/"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:26 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8f36b782af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=19PVc6QikKFjnp%2BZGOQiIuvcPuJyxqiyuxKrKRFrzaEjIfcWDthF2pgPq0cUFZ0w9CG%2ByrQJLK0HGhEJzQU851i25Tv9E5C279e8VTUPUtyoM3bamCr3xDsjaCpWTKtE%2FsY%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=4210&min_rtt=859&rtt_var=4485&sent=250&recv=175&lost=0&retrans=3&sent_bytes=150201&recv_bytes=80265&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=2156&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/manual/",
+  "text": "Unraid Docs\nPage Not Found\nWe could not find what you were looking for.\nPlease contact the owner of the site that linked you to the original URL and let them know their link is broken."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/release-notes/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/release-notes/"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:25 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e8fff92af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=EbvRBuWVU4FCdQQQyHlGYXGn6riiTVYODzOICSMDtNdDaDx266xtVY2qZSoCU2ZSpqiOz1vh%2F8jbmMc9%2BB7OO5DNEk5kR4hB6Pogh79FXEdqsVSsbZzTJ2H9UZhURwnGv7M%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=4262&min_rtt=859&rtt_var=4871&sent=123&recv=61&lost=0&retrans=2&sent_bytes=95240&recv_bytes=4253&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=470&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/release-notes/",
+  "text": "Unraid Docs\nPage Not Found\nWe could not find what you were looking for.\nPlease contact the owner of the site that linked you to the original URL and let them know their link is broken."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/API/upcoming-features/",
+    "title": "Upcoming Features | Unraid Docs",
+    "description": "Note: This roadmap outlines planned features and improvements for the Unraid API. Features and timelines may change based on development priorities and community feedback.",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/API/upcoming-features/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Upcoming Features | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Note: This roadmap outlines planned features and improvements for the Unraid API. Features and timelines may change based on development priorities and community feedback."
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:23 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e01f49cb85-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=JI6oNBHv8M8QNOKS3tyXu56ZSyqOMvigfgSFGu1UqQyFT1hipNFhr2Lf3qTvV1LxBxJjtPfJTMqhZOUGKVMPq3hXNYx%2FHYtdq66ZDKdhEFMJi%2BCT2znS3CEvAOD%2BhekgXmI%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=3466&min_rtt=895&rtt_var=5133&sent=13&recv=14&lost=0&retrans=0&sent_bytes=9071&recv_bytes=1295&delivery_rate=5087842&cwnd=257&unsent_bytes=0&cid=f5ba2f6d135db4a2&ts=222&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/API/upcoming-features/",
+  "text": "Upcoming Features | Unraid Docs\nNote: This roadmap outlines planned features and improvements for the Unraid API. Features and timelines may change based on development priorities and community feedback.\nCore Infrastructure​\nFeatureStatusTag\nAPI Development Environment Improvements\tDone\tv4.0.0\t\nInclude API in Unraid OS\tPlanned (Q1 2025)\t-\t\nMake API Open Source\tPlanned (Q1 2025)\t-\t\nSeparate API from Connect Plugin\tPlanned (Q2 2025)\t-\t\nDeveloper Tools for Plugins\tPlanned (Q2 2025)\t-\t\nSecurity & Authentication​\nFeatureStatusTag\nPermissions System Rewrite\tDone\tv4.0.0\t\nUser Interface Component Library\tIn Progress\t-\t\nUser Interface Improvements​\nFeatureStatusTag\nNew Settings Pages\tPlanned (Q2 2025)\t-\t\nCustom Theme Creator\tPlanned (Q2-Q3 2025)\t-\t\nNew Connect Settings Interface\tPlanned (Q1 2025)\t-\t\nArray Management​\nFeatureStatusTag\nArray Status Monitoring\tDone\tv4.0.0\t\nStorage Pool Creation Interface\tPlanned (Q2 2025)\t-\t\nStorage Pool Status Interface\tPlanned (Q2 2025)\t-\t\nDocker Integration​\nDocker Container Status Monitoring\tDone\tv4.0.0\t\nNew Docker Status Interface Design\tPlanned (Q3 2025)\t-\t\nNew Docker Status Interface\tPlanned (Q3 2025)\t-\t\nDocker Container Setup Interface\tPlanned (Q3 2025)\t-\t\nDocker Compose Support\tPlanned\t-\t\nArray/Cache Share Status Monitoring\tDone\tv4.0.0\t\nStorage Share Creation & Settings\tPlanned\t-\t\nStorage Share Management Interface\tPlanned\t-\t\nPlugin System​\nNew Plugins Interface\tPlanned (Q3 2025)\t-\t\nPlugin Management Interface\tPlanned\t-\t\nPlugin Development Tools\tPlanned\t-\t\nNotifications​\nNotifications System\tDone\tv4.0.0\t\nNotifications Interface\tDone\tv4.0.0\t\nFeatures marked as \"Done\" are available in current releases. The tag column shows the version where a feature was first introduced."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/faq/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/faq/"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:32 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f914fa7f2af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=eT51vEsLRXMF0PW1huTEFE42gHWYxfDlgQZ1E%2Bvu3OKyMBHYqd0kF%2BFFKDEpK8C%2FrrP%2BBTTuJlSH5zVhudocVjUHqhoxAXX6D6WrMq4BygaQ8nr7d78CKRtjNVR3I1nqz%2FI%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=2550&min_rtt=859&rtt_var=2990&sent=354&recv=279&lost=0&retrans=3&sent_bytes=198069&recv_bytes=139954&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=7499&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/faq/",
+  "text": ""
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/overview/",
+    "title": "Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:title",
+        "content": "Unraid Docs"
+      },
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/overview/"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:24 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f8e31ac7cb85-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=2pODfras1f9vQoPEo5GVbSfNgHGzhqVQC8QIIvNoVSqsiV741rlaIeKKVvx4uJQ1MZIVieh%2FE73DU3kr7N9W0dRGkVRB5I3YtsJwi4Kf7fEWFPXDx7rYskmNUU7rytg9BrM%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=7060&min_rtt=890&rtt_var=4074&sent=320&recv=55&lost=0&retrans=1&sent_bytes=414235&recv_bytes=2510&delivery_rate=2326535&cwnd=186&unsent_bytes=13651&cid=f5ba2f6d135db4a2&ts=621&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/overview/",
+  "text": ""
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/unraid-os/troubleshooting/",
+    "title": "Troubleshooting | Unraid Docs",
+    "description": "Most of the time Unraid systems function with minimal problems. This section is intended to help with resolving issues that are most commonly encountered.",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/unraid-os/troubleshooting/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Troubleshooting | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Most of the time Unraid systems function with minimal problems. This section is intended to help with resolving issues that are most commonly encountered."
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:39 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f9418bfb2af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=I2xJaXYm1o%2B9A%2BwqU6CYOopv3qshVo5qmS60YtkPg4KJQflLjqZrlKcX4ifGBYW07Xo2P9UqfhHSM8gN4HLcCPLENY0h8AErsw7W3gmc3Zzjj0BQ%2BXfHQdiNDXE0ELzylsw%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=2067&min_rtt=859&rtt_var=2099&sent=383&recv=310&lost=0&retrans=3&sent_bytes=210278&recv_bytes=152214&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=14651&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/unraid-os/troubleshooting/",
+  "text": "Troubleshooting | Unraid Docs\nMost of the time Unraid systems function with minimal problems. This section is intended to help with resolving issues that are most commonly encountered.\nThere are some important general guidelines that we recommend users follow to help with any troubleshooting:\nUse the built-in Help: The Unraid GUI has extensive built-in Help for most fields in the GUI. This can be accessed at the individual field level by clicking on the field name, or toggled on/off for the whole page by clicking on the icon at the top right of the GUI.\nUse the link to this online manual: the status bar at the bottom of the WebGUI contains a direct link to this online manual.\nEnable Notifications: Unraid has a notification system that can be used to keep you informed about the health of your Unraid system. This can be enabled and the level of notifications you receive tuned under Settings > User Preferences > Notification Settings. Since Unraid systems often function for very long times without needing any user oversight, it can be important that you are informed of problems when they first occur, as unresolved ones can grow into more serious problems.\nAsk for help in the forums: Unraid has a vibrant user community and many knowledgeable users who are active in the Unraid forums. Any time you encounter a problem and you are not sure how to proceed, it is a good idea to ask questions in the forums. There is nothing worse than rushing into trying to fix a problem using a process you do not understand and as a result turning the problem into something more serious.\nCapture diagnostics: If you want to ask a question in the forums about a problem you are encountering you are frequently going to be asked to provide your system diagnostics file. You need to do so BEFORE YOU REBOOT so that the logs show what went wrong. The system diagnostics log is cleared at every reboot."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/category/faq/",
+    "title": "FAQ | Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/category/faq/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "FAQ | Unraid Docs"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:38 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f93f39892af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=KEOAbnRJBY3Ct933EWygJHd0barbjo1tnpj3fzOHVPOgT1NB6Ojp8DQ1vcj114nKakKskW2Kht1hEukoRXCKJMdoAgBskBr4v4aHEESRNUINPNwyEfcvGqH0lyx9jxeRcU0%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=2811&min_rtt=859&rtt_var=3547&sent=374&recv=304&lost=0&retrans=3&sent_bytes=203662&recv_bytes=151966&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=14273&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/category/faq/",
+  "text": "FAQ | Unraid Docs\n📄️ Redeem License Activation Code\nFirst, buy an activation code via our website. Your unique activation code will be on your purchase receipt."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/connect/help/",
+    "title": "Unraid Connect Help | Unraid Docs",
+    "description": "Installation",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/connect/help/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Unraid Connect Help | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Installation"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:42 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f954387d2af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=kCjtg3OgPfABOQYv%2FZaNAI7lSkkAIT6KEqzAOBUF%2FxHpIBrpnold5mfemso7P%2BIoV8FW%2BL2RxtbIYwKvbn92GQA5P5gA2xCK%2BetC0CwT8UMd%2F7nebXTUrNINhiQ6hXC4GAQ%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=4691&min_rtt=859&rtt_var=5490&sent=489&recv=378&lost=0&retrans=3&sent_bytes=283965&recv_bytes=163755&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=17629&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/connect/help/",
+  "text": "Unraid Connect Help | Unraid Docs\nInstallation​\nNavigate to the Apps tab, then search for and install Unraid Connect\nIn the top right corner of your Unraid server, click the Unraid logo and then Sign In. Follow the prompts to sign in with your Unraid.net credentials, or create a new account. \nRegister Your Server with Unraid Connect by following the prompts\nVisit the Unraid Connect Dashboard (see below)\nUnraid Connect Dashboard​\nSign in to the Unraid Connect Dashboard at https://connect.myunraid.net for a comprehensive overview of your Unraid server's online/offline status, available storage, license type, uptime, Unraid OS version, and more.\nIf you have multiple servers, you will see each one listed in the left-side pane and a tile for each server. \nFrom here, you can get more details about each server by clicking on Details.\nManage Your Server From Within the Connect UI​\nServers equipped with a myunraid.net certificate can be managed directly from within the Connect web UI.\nYou can even manage multiple servers from your phone, tablet, laptop, or PC in the same browser window.\nTo install a myunraid.net certificate, head to the Settings → Management Access page of the Unraid WebGUI and click Provision in the Certificate section, if applicable.\nA note regarding DNS Rebinding Protection​\nIf you see this message after clicking the Provision button, click OK, try waiting 2-5 minutes, then click Provision again. If that doesn't work, keep reading.\nMany routers have a security feature known as DNS Rebinding Protection. This feature prevents public DNS entries from pointing to local IP addresses on your network. Unfortunately, this feature prevents us from providing proper SSL access when connecting to the WebGUI locally. As such, users must either disable this feature on their router or set their router to allow DNS rebinding for the myunraid.net domain (if the certificate was provisioned in Unraid 6.10) or unraid.net domain (if the certificate was provisioned in 6.9) Depending on your router, how this feature is described and whether or not it is available to configure may vary. In addition, once you have DNS rebinding disabled on your router, when you go to provision your certificate, you may still see the DNS rebinding error message the first time. This is due to the time it takes for DNS records to propagate once provisioned.\nHow to access your server when DNS is down​\nOnce you enable local SSL per the instructions above, you will access your server through a Fully Qualified Domain Name:\nhttps://ip.yourpersonalhash.myunraid.net or https://ip.yourpersonalhash.myunraid.net:<https_port> (if your https port is not the default of 443)\nThis is required in order to utilize a fully valid SSL certificate. A downside is if you temporarily lose Internet access and your browser has not cached the DNS for yourpersonalhash.unraid.net, you will be unable to access the WebGUI.\nIf the Internet goes down and you lose access to DNS, do the following:\nIf Use SSL/TLS is set to Yes, then you can access your server using: https://[servername].[localTLD] or https://servername.[localTLD]:<https_port> (if your https port is not the default of 443)\nIf that doesn't work, or if Use SSL/TLS is set to Strict, then using telnet, SSH or local keyboard/monitor log in to the server and type: use_ssl no\nNow you will be able to access your server's WebGUI via: http://<ip_address> (note: http not https) or http://<server_ip>:<http_port> (if your http port is not the default of 80)\nWhen the Internet comes back, navigate to Settings → Management Access and set Use SSL/TLS back to Strict to re-enable local SSL.\nHow to disable SSL for local access​\n(If you currently cannot access the WebGUI, scroll up to the previous topic.) If you decide you would rather not use the secure https://ip.yourpersonalhash.myunraid.net url for local access, you can disable SSL. There is no need to uninstall the Unraid Connect plugin, in fact that will have no effect on SSL as this is a core feature of Unraid and not the plugin.\nNavigate to Settings → Management Access, set Use SSL/TLS to No and hit Apply. This will also disable the Remote Access feature at the same time.\nServer Deep Linking​\nDeep linking allows you to manage relevant sections of the Unraid WebGUI in one click. Click any of the circled link buttons to take you right to the relevant page in the Unraid WebGUI:\nSet custom server tiles how you like and automatically display your server's banner image on your Connect Dashboard.\nUnder Server Details, there is a hamburger button on each tile for east drag and drop arranging.\nTo toggle between dark and light mode, click the Sun or Moon icon in the far right of the Connect UI.\nLicense Management​\nManage your license keys at any time via the My Keys section. You can even upgrade right from the Connect UI.\nLanguage Localization​\nUnraid OS has a global user base so be sure to enjoy Unraid Connect in English, German, French, Spanish or Chinese!\nSigning Out​\nIn the event that you wish to sign out of the Unraid Connect program on your system, you can do so from the Settings → Management Access → Unraid Connect → Account Status and click the Sign Out button.\nNOTE: Signed-out servers will still be displayed on the Unraid Connect Dashboard, but you will only be able to download their registration key(s).\nUninstalling the plugin​\nNote: if your goal is to change your url from https://yourpersonalhash.unraid.net back to http://computername, see How to disable SSL for local access. Uninstalling the plugin will have no effect on your url!\nUninstalling the plugin will automatically:\nDeactivate and delete the backup files from your flash drive. In time, the files will automatically be removed from our cloud servers once we recognize the backups are abandoned. To proactively delete them, you can Disable Flash Backup before uninstalling the plugin.\nDisable Remote Access. Please remember to disable any port forward that you configured in your router related to this feature.\nSign Out from Unraid.net.\nConnect Troubleshooting​\nIt should be rare, but if you see any connection error messages in the UPC please open a terminal window and type:\nunraid-api restart\nIf you have other Unraid Connect Support related questions, please see our Unraid Connect user forum or contact us to open a support ticket."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/connect/privacy/",
+    "title": "Privacy | Unraid Docs",
+    "description": "Maintaining your data integrity, security, and privacy are of the utmost",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/connect/privacy/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Privacy | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Maintaining your data integrity, security, and privacy are of the utmost"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:41 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f94d29042af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=wO6y6Xb4o5N%2BPgRqPG4eIuWQ7LE%2BE7ho34tcmynfto1Has7bfq4lveCJ2HhsQa5BAUdWH0%2BEZgi7i%2BiEFRP42lFqqML1YAbx6csUsWwfcVaYCGei26wPgn2ByzSj08rl7es%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=2754&min_rtt=859&rtt_var=3391&sent=439&recv=352&lost=0&retrans=3&sent_bytes=247726&recv_bytes=160008&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=16561&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/connect/privacy/",
+  "text": "Privacy | Unraid Docs\nMaintaining your data integrity, security, and privacy are of the utmost importance to us at Lime Technology. Below is a disclosure of what we store and relay when you use Unraid Connect. For more information, please see our policies page.\nData We Store​\nWhen a server signs in to Unraid.net, it opens a secure connection to our hosted infrastructure and sends just enough data so we can give you a meaningful overview of your servers in the Unraid Connect Dashboard. We do not keep historical data, just the most recent update from your server which includes:\nYour server's hostname, description, and icon\nYour server's keyfile details and flash GUID\nYour server's Local Access URL\nYour server's LAN IP, if an unraid.net certificate is installed\nYour server's Remote Access URL and WAN IP, if Remote Access is enabled\nThe version of Unraid that is installed, and its uptime\nThe version of the Unraid Connect plugin that is installed, and version / uptime of the unraid-api\nThe size of your array and the amount used (just numbers, no details about what is stored on the array)\nThe number of Docker Containers and VMs installed and started\nSeparate and unrelated to the Unraid Connect Dashboard, the Flash Backup service stores your server's configuration data.\nThis data is stored solely for the purpose of providing services to you through our platform and is not publicly accessible. To remove this data from our servers you must follow the procedure listed in the Uninstalling the plugin section as well as remove all SSL certificates generated for you through our Let's Encrypt partnership."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/connect/",
+    "title": "Unraid Connect | Unraid Docs",
+    "description": "What is Unraid Connect?",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/connect/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Unraid Connect | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "What is Unraid Connect?"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:40 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f94a5e352af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=7jivTqzfL24qxPSrJKuYguvWaiOH9HVWfkW2wgcZBYJ4wqjAtb%2FUzsela6PunGFjGCTxy01uuydfUCEBCOgnjI5mNsfb1AzXKWSA9YkBUG6J717Hv4zD6N14PpVxlw73JnA%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=7083&min_rtt=859&rtt_var=11315&sent=396&recv=322&lost=0&retrans=3&sent_bytes=218611&recv_bytes=155702&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=16071&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/connect/",
+  "text": "Unraid Connect | Unraid Docs\nWhat is Unraid Connect?​\nUnraid Connect is your one-stop shop for server management, monitoring, and maintenance. Enjoy the convenience and connectivity of the cloud right from your Unraid homelab.\nConnect is designed to extend the value of your investment in Unraid by enabling you to more easily connect, share, monitor, and access your Unraid Server with a suite of new features including Dynamic Remote Access, Server Deep Linking, Server management from the Connect UI, Online flash backups, Real-time monitoring, and much more!\nLaunch Unraid Connect"
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/connect/flash-backup/",
+    "title": "Automated Flash Backup | Unraid Docs",
+    "description": "Unraid Connect offers users the ability to automatically back up your OS",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/connect/flash-backup/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Automated Flash Backup | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Unraid Connect offers users the ability to automatically back up your OS"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:43 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f959fe952af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=BiI8r%2BTzoSU5qSPuyWG4aEsablv5jNIT9CxlVbWvbnlg68cz0QBHxch38LuPqXSSEnq%2BT%2BABZQLX76rU1dmSjipCTHT36zEefcXVdR7KBg9DF5iamj5EWuVDgL04w5Wn2KU%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=5299&min_rtt=859&rtt_var=6674&sent=538&recv=399&lost=0&retrans=3&sent_bytes=321761&recv_bytes=164969&delivery_rate=18756476&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=18548&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/connect/flash-backup/",
+  "text": "Automated Flash Backup | Unraid Docs\nUnraid Connect offers users the ability to automatically back up your OS configuration settings to our cloud. In the event of flash device failure, you can download a zip file of your latest backup and restore it to a new flash drive using the USB Flash Creator.\nNote: Flash Backup is an optional feature, not required to use the rest of Unraid Connect.\nEnabling Flash Backup (optional)​\nUntil we are able to fully encrypt the flash backups on our servers, we exclude all sensitive data owned by the OS from the backups, including Unraid account passwords and WireGuard encryption keys. However, the backups do include docker template XML files, which may contain application-specific passwords and other private data. We are working on solutions to encrypt the backups.\nNavigate to Settings → Management Access → Unraid Connect and under Flash backup click the Activate button.\nWait for the activation and initial backup job to complete (once done, it will show Activated: Up-to-date.\nOnce activated, any changes to the OS configuration will automatically be replicated to the backup in our cloud servers (within 1-2 minutes of the change).\nImportant: Backups from the flash device do not include the config/shadow or config/smbpasswd files. User accounts are preserved, but their passwords are not. This means that when you restore from backup, you will need to set passwords for your users including root. We also don't store any of your WireGuard keys. More info below.\nThis service is intended to store configuration files that will allow you to get back up and running quickly, it is not a 1:1 backup of the contents of your flash drive. It specifically does not backup transient files such as logs. It backs up the plugin configuration files but not the application files, as those will automatically be downloaded when the system boots. It will backup individual files up to 10 MB in size, and if the overall repository exceeds 100 MB it will be deleted and recreated.\nRestoring a Flash Backup​\nLog in to Unraid Connect.\nSelect Details.\nClick Generate flash backup from the Flash backup tile.\nThis will combine your OS configuration data with the OS release version you were running and put them both into a zip file that can be used with our flash creator tool to restore the backup to a new flash device.\nAfter the backup has been generated, you can click Download flash backup to obtain it.\nUse the Unraid USB Flash Creator to restore your backup to a new flash drive.\nAdditional Steps Required​\nOnce you boot the OS, there are only a few things you will need to reconfigure:\nOn the Settings → Management Access → Unraid Connect page, click to activate your flash backup again.\nOn the Users page, for each user (including root), you will need to reset your passwords.\nOn the Settings → VPN Manager page, for each tunnel and peer select the key icon. Click Generate Keypair and Generate Key, start each tunnel, then download the new client configuration to each associated client device.\nIf your server does not have Internet access when you reboot then you will need to go to Apps → Previous Apps and reinstall your plugins once you have Internet access. The configuration files will be on your system ready to use once the application files have been installed.\nDisabling Flash Backup​\nIf you no longer wish to use the flash backup service, you can disable it:\nOn the Settings → Management Access → Unraid Connect page, click to deactivate your flash backup.\nOn the resulting confirmation dialog, check the box that says Also delete cloud backup. Note that once you do this you will not be able to restore from the backup. If you forget to check this box do not worry, the files will automatically be deleted once our systems detect they are not being updated.\nPrivacy​\nFlash Backups are Not Encrypted​\nIt is important to note that at this time, all backups of your flash device are stored in our cloud in a non-encrypted format. This is why we do not store the sensitive data mentioned below.\nSensitive Data​\nUntil we are able to fully encrypt the flash backups on our servers, to ensure absolute privacy and integrity we have a few hard and strict policies regarding the storing of sensitive data. We do not store:\nUnraid root or user account passwords\nPublic, private, or shared WireGuard keys"
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/connect/remote-access/",
+    "title": "Remote Access | Unraid Docs",
+    "description": "Remote Access",
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/connect/remote-access/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Remote Access | Unraid Docs"
+      },
+      {
+        "property": "og:description",
+        "content": "Remote Access"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:43 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f95c39752af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=XU80lucQQECz5MNZNBJjDZpODL%2Bbncp%2BjGyzJ4ZHJcEhwPAM2WHRoAYEG8KXKuI7%2BhaPelE5l7AgkOAg49m6Qg2t3pfSsQisQUdbUJFnAhcSUFSW34lLOULZRAat9Wg4tJs%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=9538&min_rtt=859&rtt_var=11941&sent=732&recv=418&lost=0&retrans=3&sent_bytes=570208&recv_bytes=168414&delivery_rate=1492783&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=18978&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/connect/remote-access/",
+  "text": "Remote Access | Unraid Docs\nThe Remote Access feature allows you to access your Unraid WebGUI from the Internet. If you need access to Docker containers, network drives, or other devices on your network, you'll want to setup a VPN instead.\nNote: Before enabling remote access, consider your root password. Is it sufficiently complex? Update your root password on the Users page.\nAlso note: Remote Access is an optional feature, and is not required to use the rest of Unraid Connect.\nInitial Setup​\nFrom Unraid WebGUI Navigate to Settings → Management Access\nNote the HTTPS port, it defaults to port 443. If you have Docker containers running on this port, choose an unused port over 1000 such as 3443, 4443, 5443, etc.\nIf you changed any of the above settings, hit Apply for them to take effect.\nIn the CA-signed certificate file area, click Provision\nChoose Remote Access Type​\nThere are two kinds of Remote Access provided through Unraid Connect: Dynamic Remote Access and Static Remote Access\nDynamic Remote Access enables access to your WebGUI from the internet only when needed, and leaves the WebGUI inaccessible from WAN otherwise. This feature works with both UPNP as well as static port forwarding and uses an API call through the Unraid Connect plugin to open your WebGUI to internet traffic, closing it automatically when not needed. This helps to prevent automated attacks.\nStatic Remote Access enables your server to listen to WAN traffic at all times, allowing your server to be accessed from the internet.\nDynamic Remote Access​\nTo use Dynamic Remote access, first set the type you would like to use in the Settings → Management Access → Unraid Connect settings page. Choose one of the Dynamic settings in the Remote Access dropdown:\nDynamic - UPNP \nThis option enables dynamic access through the Connect dashboard, as well as automatically opening and closing a random port on network with UPNP. To use this option your router must have UPNP enabled.\nDynamic - Manual Port Forward \nThis option enables dynamic access through the Connect dashboard, but requires manual port forwarding.\nDynamic Remote Access Usage​\nNavigate to Unraid Connect, then to either the management page or the server details view\nYou will be presented with a new Dynamic Remote Access card, with a button that will be enabled if your server is not accessible from your current location.\nClicking the button will trigger your server to enable wan access, and if using UPNP, create a new UPNP port forward lease on your router. This can take up to a minute to complete\nWhen using UPNP, a 30 minute lease will be created, which will be renewed automatically while Dynamic Remote Access is enabled.\nAfter enabling, the card will report the status of the enabling process, and what the current state of UPNP is.\nAfter ten minutes of inactivity, or clicking \"Disable Remote Access\", your server will automatically turn off access from WAN traffic.\nWhen using UPNP, your server will also attempt to remove the UPNP lease from your router.\nConfiguring UPNP (Applies to Dynamic - UPNP / Always On - UPNP)​\nEnsure your router supports UPNP and has it enabled.\nNavigate to Settings → Management Access and set \"Use UPnP\" to Yes.\nOn the Unraid Connect settings page, set the remote access option to UPNP (either Dynamic or Always On) and Apply.\n(Always on Forwarding Only) : Press the Check button. If the port is forwarded correctly you will see a message saying \"Your Unraid Server is reachable from the Internet\" \nNote: When using Dynamic forwarding, you will not be able to access your server from this manual port forward unless you click the Enable Dynamic Remote access button in Unraid Connect.\nNote: If the setting changes from UPnP to \"Manual Port Forward\" when you reload the page, then we were not able to communicate with your router to enable UPnP. It may need to be enabled on your router, or perhaps the router needs a firmware update to use it.\nConfiguring Manual Port Forwarding (Applies to Dynamic - Manual Port Forward / Always On - Manual Port Forward)​\nSet the WAN port you want to use. We highly recommend you choose a random port over 1000 rather than using the default of 443. i.e. something like 13856, 48653, etc\nClick Apply\nSetup your router to port forward the WAN port you specified to the HTTPS port used by the server. There is a note on the screen telling you the exact ports and IP to use. \nNote: some routers require that the WAN port match the HTTPS port. In that case, we'd recommend setting both to the same high random number.\n(Always on Forwarding Only) : Press the Check button. If the port is forwarded correctly you will see a message saying \"Your Unraid Server is reachable from the Internet\" \nNote: When using Dynamic forwarding, you will not be able to access your server from this manual port forward unless you click the Enable Dynamic Remote access button in Unraid Connect\nTo access your server using Remote Access, login to Unraid Connect and click the Manage link\nOptional step for secure local access​\nIf you want to use secure https for local access to your server as well, navigate to Settings → Management Access. In the CA-signed certificate area, if there are no warnings about DNS Rebinding then go ahead and set Use SSL/TLS to Strict. If there are warnings about DNS Rebinding see A note regarding DNS Rebinding Protection.\nNote that once SSL is set to Strict, your client computers will need access to DNS in order to access your server. This means if your Internet connection drops you will likely lose access to your server's WebGUI. See How to access your server when DNS is down."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/category/tutorial---basics/",
+    "title": "Tutorial - Basics | Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/category/tutorial---basics/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Tutorial - Basics | Unraid Docs"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:44 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f962880a2af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=b6d0EsWDMzN3yOz6cu9ud3wV%2FTtiaELl6DGvR42Tla3vfpOEMC5obf4h%2BqU2ie63jRmtmxpfJjzAymMpubfZFfwtP0p%2FtOa0y8GEk1Z%2FXz59J6seidF9X3MJE2SRe7TQdY0%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=6723&min_rtt=859&rtt_var=9273&sent=744&recv=424&lost=0&retrans=3&sent_bytes=579772&recv_bytes=170036&delivery_rate=11334637&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=20003&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/category/tutorial---basics/",
+  "text": "Tutorial - Basics | Unraid Docs\n📄️ Create a Page\nAdd Markdown or React files to src/pages to create a standalone page:\n📄️ Create a Document\nDocuments are groups of pages connected through:\n📄️ Markdown Features\nDocusaurus supports Markdown and a few additional features.\n📄️ Congratulations\nYou have just learned the basics of Docusaurus and made some changes to the initial template."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/category/manual/",
+    "title": "Manual | Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/category/manual/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Manual | Unraid Docs"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:46 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f970ef852af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "link": "<https://www.google-analytics.com>; rel=\"preconnect\", <https://www.googletagmanager.com>; rel=\"preconnect\", </img/un-mark-gradient.svg>; rel=\"preload\"; as=image",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Otwuiv9G29cg0VZUVHsZompB2a5WGdpmuelzp50f0S%2B7SKbwjFX4nI6HKkpC9bh2bHs%2FRt7sgkDRcclEY8o5c71Du6CvONGPd2pOSpqufz7PK3V8qAC3Z2LujiTp4UDSbpI%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=1105&min_rtt=859&rtt_var=88&sent=850&recv=474&lost=0&retrans=3&sent_bytes=690598&recv_bytes=174141&delivery_rate=41569377&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=22229&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/category/manual/",
+  "text": "Manual | Unraid Docs\n📄️ Additional Settings\nWhile Unraid is configured to work automatically, you may want to further refine your setup by customizing your IP address, hostname, disk tunables, and other settings. This section goes over the various settings you can configure from the Unraid WebGUI. All settings controls can be found under the Settings tab on the Unraid navigation bar, unless otherwise specified."
+},
+{
+  "metadata": {
+    "canonicalUrl": "https://docs.unraid.net/category/tutorial---extras/",
+    "title": "Tutorial - Extras | Unraid Docs",
+    "description": null,
+    "author": null,
+    "keywords": "Unraid, server, storage, NAS, Docker, virtualization, array, parity, data protection, file sharing, plugins, management, GUI, disk management, caching, SSD, disk encryption, security, RAID, network configuration, backups, media server, transcoding, monitoring, VMs, GPU passthrough, hardware compatibility",
+    "languageCode": "en",
+    "openGraph": [
+      {
+        "property": "og:image",
+        "content": "https://docs.unraid.net/img/meta-unraid.png"
+      },
+      {
+        "property": "og:url",
+        "content": "https://docs.unraid.net/category/tutorial---extras/"
+      },
+      {
+        "property": "og:locale",
+        "content": "en"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "zh"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "es"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "fr"
+      },
+      {
+        "property": "og:locale:alternate",
+        "content": "de"
+      },
+      {
+        "property": "og:title",
+        "content": "Tutorial - Extras | Unraid Docs"
+      }
+    ],
+    "jsonLd": null,
+    "headers": {
+      "date": "Thu, 01 May 2025 17:24:45 GMT",
+      "content-type": "text/html; charset=utf-8",
+      "cf-ray": "9390f968ef4e2af1-LAX",
+      "server": "cloudflare",
+      "content-encoding": "br",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=14cH6JZawxtLp%2B6xBkslhb6Z5uNXOxjFJX1CuZ6yC0FBZLeTWmngEZRDBv2Os%2Bz8HzuH1WfLu2%2BSbjm4nsf3NnQhcQVw1Hpb7t9AyK707g%2FywBnx5hhWY4kiP6NwLhOEHeU%3D\"}], \"group\":\"cf-nel\", \"max_age\":604800}",
+      "nel": "{\"success_fraction\":0, \"report_to\":\"cf-nel\", \"max_age\":604800}",
+      "vary": "Accept-Encoding",
+      "cf-cache-status": "DYNAMIC",
+      "alt-svc": "h3=\":443\"; ma=86400",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfL4;desc=\"?proto=TCP&rtt=1391&min_rtt=859&rtt_var=764&sent=813&recv=453&lost=0&retrans=3&sent_bytes=654392&recv_bytes=172167&delivery_rate=41569377&cwnd=251&unsent_bytes=0&cid=5d6a42fb03a23f1c&ts=20999&x=0\"",
+      "x-firefox-spdy": "h2"
+    }
+  },
+  "url": "https://docs.unraid.net/category/tutorial---extras/",
+  "text": "Tutorial - Extras | Unraid Docs\n📄️ Manage Docs Versions\nDocusaurus can manage multiple versions of your docs."
+}]
