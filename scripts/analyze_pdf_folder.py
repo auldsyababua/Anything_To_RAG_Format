@@ -1,59 +1,69 @@
 # scripts/analyze_pdf_folder.py
 
+# ----------------------------------------
+# PDF Analyzer
+# ----------------------------------------
+# Scans all PDFs in the ingestion_source directory
+# - Counts # of pages per file
+# - Estimates % of pages with extractable text
+# - Flags scanned/image-based or empty PDFs
+# Useful for pre-checking OCR needs or ingest quality
+# ----------------------------------------
+
 import fitz  # PyMuPDF
+import os
+import sys
 from pathlib import Path
-from config import SOURCE_FOLDER as PDF_DIR
+
+# Load ingestion folder from config
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import INGESTION_SOURCE
 
 # ----------------------------------------
-# PDF Content Analyzer
+# Analyze a single PDF for extractability
 # ----------------------------------------
-# Scans all PDFs in SOURCE_FOLDER and reports:
-# - Total pages
-# - Pages with extractable text
-# - Content type summary (text/image)
-# - Flags image-only documents
+def analyze_pdf(path: Path) -> dict:
+    try:
+        doc = fitz.open(path)
+        total_pages = len(doc)
+        extractable_pages = sum(1 for page in doc if page.get_text().strip())
+        return {
+            "filename": path.name,
+            "pages": total_pages,
+            "text_pages": extractable_pages,
+            "ratio": round(100 * extractable_pages / max(1, total_pages), 1)
+        }
+    except Exception as e:
+        return {
+            "filename": path.name,
+            "pages": 0,
+            "text_pages": 0,
+            "ratio": 0.0,
+            "error": str(e)
+        }
 
-def analyze_pdf(file_path: Path) -> dict:
-    doc = fitz.open(file_path)
-    total_pages = len(doc)
-    pages_with_text = 0
-    element_types = set()
+# ----------------------------------------
+# Walk the ingestion folder and analyze all PDFs
+# ----------------------------------------
+def main():
+    pdfs = list(INGESTION_SOURCE.rglob("*.pdf"))
+    if not pdfs:
+        print(f"[INFO] No PDFs found in {INGESTION_SOURCE}")
+        return
 
-    for page in doc:
-        text = page.get_text()
-        if text.strip():
-            pages_with_text += 1
+    print(f"\n[📄] PDF Pre-Check: {len(pdfs)} file(s) found in {INGESTION_SOURCE}\n")
+    header = f"{'File':40} | Pages | Text Pages | % Text"
+    print(header)
+    print("-" * len(header))
 
-        blocks = page.get_text("dict").get("blocks", [])
-        for block in blocks:
-            if "lines" in block:
-                element_types.add("text")
-            elif "image" in block:
-                element_types.add("image")
+    for pdf in pdfs:
+        result = analyze_pdf(pdf)
+        print(f"{result['filename'][:40]:40} | "
+              f"{result['pages']:>5}  | "
+              f"{result['text_pages']:>10}  | "
+              f"{result['ratio']:>6}%")
 
-    return {
-        "file": file_path.name,
-        "pages": total_pages,
-        "text_pages": pages_with_text,
-        "image_only": (pages_with_text == 0),
-        "elements": sorted(element_types),
-    }
-
-def scan_folder(pdf_folder: Path):
-    results = []
-    for file_path in pdf_folder.glob("*.pdf"):
-        try:
-            info = analyze_pdf(file_path)
-            results.append(info)
-        except Exception as e:
-            results.append({"file": file_path.name, "error": str(e)})
-    return results
+    print("\n[✅] PDF audit complete.\n")
 
 if __name__ == "__main__":
-    from pprint import pprint
-
-    results = scan_folder(PDF_DIR)
-    sorted_results = sorted(results, key=lambda x: x.get("text_pages", 0), reverse=True)
-
-    for r in sorted_results:
-        pprint(r)
+    main()

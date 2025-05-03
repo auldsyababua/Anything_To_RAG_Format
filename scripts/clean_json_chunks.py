@@ -1,46 +1,73 @@
 # scripts/clean_json_chunks.py
 
+# ----------------------------------------
+# Chunk Cleaner
+# ----------------------------------------
+# Takes unified output JSON (from smart_ingest)
+# - Removes markdown image syntax
+# - Strips inline HTML tags
+# - Drops empty, junky, or short chunks
+# - Preserves metadata + markdown if present
+# Output: Cleaned version of unified.json → unified-clean.json
+# ----------------------------------------
+
 import json
 import re
+import argparse
+import sys
 from pathlib import Path
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+# Import canonical paths from config
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import FULL_OUTPUT_FILE, CLEAN_FULL_OUTPUT_FILE
 
-# Strip image tags, HTML, excess spacing
-def strip_junk(text: str) -> str:
-    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
-    text = re.sub(r"<svg.*?</svg>", "", text, flags=re.DOTALL)
-    text = re.sub(r"<.*?>", "", text)
-    text = re.sub(r"\n{3,}", "\n\n", text)
+# ----------------------------------------
+# Utility: Clean raw content text
+# ----------------------------------------
+def clean_text(text: str) -> str:
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)         # remove markdown images
+    text = re.sub(r"<[^>]+>", "", text)                      # remove inline HTML tags
+    text = re.sub(r"\s+", " ", text)                         # normalize whitespace
     return text.strip()
 
-# Normalize bad or missing titles
-def extract_title(raw_title: str, content: str) -> str:
-    if raw_title and raw_title.strip().lower() != "github":
-        return raw_title.strip()
-    match = re.search(r"^#+\s+(.*)", content, flags=re.MULTILINE)
-    return match.group(1).strip() if match else "Untitled"
+# ----------------------------------------
+# Apply cleaning to a single chunk object
+# Drops if empty or under threshold
+# ----------------------------------------
+def clean_chunk(chunk: dict) -> dict | None:
+    content = chunk.get("content", "")
+    cleaned = clean_text(content)
 
-# Filter out trivial chunks
-def is_valid(chunk: dict) -> bool:
-    return bool(chunk.get("content", "").strip()) and len(chunk["content"]) > 20
+    if not cleaned or len(cleaned) < 40:
+        return None  # drop if blank or too short
 
-# Load → clean → write
-chunks = json.loads(FULL_OUTPUT_FILE.read_text(encoding="utf-8"))
-cleaned = []
+    chunk["content"] = cleaned
+    return chunk
 
-for chunk in chunks:
-    content = strip_junk(chunk.get("content", ""))
-    title = extract_title(chunk.get("title"), content)
-    cleaned_chunk = {
-        "source": chunk.get("source", "unknown"),
-        "title": title,
-        "content": content,
-        "metadata": chunk.get("metadata", {})
-    }
-    if is_valid(cleaned_chunk):
-        cleaned.append(cleaned_chunk)
+# ----------------------------------------
+# Entry Point
+# ----------------------------------------
+def main():
+    parser = argparse.ArgumentParser(description="Clean and filter raw JSON chunks.")
+    parser.add_argument("--input", type=str, default=FULL_OUTPUT_FILE, help="Path to raw unified.json")
+    parser.add_argument("--output", type=str, default=CLEAN_FULL_OUTPUT_FILE, help="Path to save cleaned output")
+    args = parser.parse_args()
 
-CLEAN_FULL_OUTPUT_FILE.write_text(json.dumps(cleaned, indent=2), encoding="utf-8")
-print(f"Cleaned {len(cleaned)} valid chunks saved to {CLEAN_FULL_OUTPUT_FILE}")
+    input_path = Path(args.input)
+    output_path = Path(args.output)
+
+    raw_chunks = json.loads(input_path.read_text(encoding="utf-8"))
+    cleaned_chunks = []
+
+    for chunk in raw_chunks:
+        cleaned = clean_chunk(chunk)
+        if cleaned:
+            cleaned_chunks.append(cleaned)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(cleaned_chunks, f, indent=2, ensure_ascii=False)
+
+    print(f"[✅] Cleaned {len(cleaned_chunks)} chunks → {output_path}")
+
+if __name__ == "__main__":
+    main()

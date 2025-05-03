@@ -1,9 +1,12 @@
+Here’s the updated **pipeline-diagram.ascii** using your beautifully styled format, now aligned with the current pipeline logic (split by domain, `.env` config, updated Makefile flow, etc.):
+
+````
 ────────────────────────────────────────────────────────────────────────────
 🧱 MIXED-FORMAT INGESTION PIPELINE: End-to-End Chunking for RAG
 ────────────────────────────────────────────────────────────────────────────
 
-This shows how clean-gpt-json ingests any combo of `.pdf`, `.md`, `.json`, `.html`, or `.epub`,
-cleans and chunks them, and produces per-document JSONs ready for embedding in RAG systems.
+This shows how clean-gpt-json ingests `.pdf`, `.md`, `.json`, `.html`, or `.epub`,
+cleans and chunks them, and produces per-domain or ingested file JSONs ready for embedding in RAG systems.
 
 ─────────────────────────────
 1. 📂 DROP FILES INTO INGESTION SOURCE
@@ -12,21 +15,22 @@ Put any supported document types into:
 → `ingestion_source/`
 
 Example:
-  ingestion_source/
-  ├── pinecone.json
-  ├── datasheet.pdf
-  ├── system_manual.md
-  ├── support_pages.epub
+ingestion_source/
+├── pinecone.json
+├── datasheet.pdf
+├── system_manual.md
+├── support_pages.epub
 
 ─────────────────────────────
-2. 🧠 SMART INGEST (make run → smart_ingest.py)
+2. 🧠 SMART INGEST (`make run` → `smart_ingest.py`)
 ─────────────────────────────
 File types auto-detected and parsed:
-- PDF → sentence-chunked pages
-- MD → paragraph windows
-- JSON → flattened crawler format
-- HTML → stripped DOM
-- EPUB → parsed chapter DOMs
+
+* PDF → sentence-chunked pages
+* MD → paragraph windows
+* JSON → flattened crawler format
+* HTML → stripped DOM
+* EPUB → parsed chapter DOMs
 
 Output:
 → `full/unified.json`
@@ -36,68 +40,89 @@ ASCII: Raw Input → Unified Chunk List
 ──────────────────────────────────────────────────────────────
 
 ingestion_source/               full/unified.json
-┌────────────┐                  ┌────────────────────────────────┐
-│ pinecone.json│ → parse →     │ [                              │
-│ datasheet.pdf│ → extract →   │   { "source": "pinecone_1",... │
-│ system.md    │ → window  →   │   { "source": "datasheet_3",...│
-│ support.epub │ → strip   →   │   { "source": "support_8",...  │
-└────────────┘                  │   ...                          │
-                               │ ]                              │
+┌───────────────┐               ┌────────────────────────────────┐
+│ pinecone.json │ → parse  →   │ [                              │
+│ datasheet.pdf │ → extract→   │   { "source": "pinecone_1",... │
+│ system.md     │ → window  →  │   { "source": "datasheet_3",...│
+│ support.epub  │ → strip   →  │   { "source": "support_8",...  │
+└───────────────┘               │   ...                          │
                                └────────────────────────────────┘
 
 ─────────────────────────────
-3. 🧹 CLEAN TEXT
+3. 🧹 CLEAN TEXT (`clean_json_chunks.py`)
 ─────────────────────────────
-Remove markdown images, HTML tags, empty/junk chunks.
-
-Script:
-  `scripts/clean_json_chunks.py`
+* Removes markdown image links, raw HTML tags, SVGs
+* Filters short or empty junk chunks
+* Infers fallback titles from headings
 
 Output:
 → `full/unified-clean.json`
 
 ─────────────────────────────
-4. ✂️ SPLIT BY SOURCE (group by metadata.doc_id)
+4. 🔪 SPLIT LARGE FILES BY DOMAIN (`split_large_json_files.py`)
 ─────────────────────────────
-Chunks are grouped by `doc_id` and saved individually.
-
-Script:
-  `scripts/split_ready_for_customgpt.py`
+* All chunks for a crawl stay grouped by domain
+* Split into `_part1.json`, `_part2.json`, etc. if >50MB
 
 Output:
-→ `split/{doc_id}.json`
+→ `split/{domain}.json`
 
 ──────────────────────────────────────────────────────────────
-ASCII: Unified → Split Output
+ASCII: Unified → Split Output (by domain)
 ──────────────────────────────────────────────────────────────
 
 full/unified-clean.json         split/
 ┌──────────────────────────┐    ┌────────────────────────────┐
-│ [                        │    │ pinecone.json              │
-│  {metadata: {doc_id: X}},│ → │ datasheet.json             │
-│  {metadata: {doc_id: Y}},│    │ support_pages.json         │
+│ [                        │    │ unraid.net.json            │
+│  {metadata: {url: ...}}, │ → │ docs.pinecone.io.json       │
 │  ...                     │    └────────────────────────────┘
 └──────────────────────────┘
 
 ─────────────────────────────
-5. 🧠 INJECT TITLES (optional)
+5. 🏷️ INJECT TITLES (`inject_titles_from_source.py`)
 ─────────────────────────────
-Infer `metadata.title` from metadata.url or source fallback.
-
-Script:
-  `scripts/inject_titles_from_source.py`
+* Adds `metadata.title` from `metadata.url`
+* Skips if title already exists
 
 ─────────────────────────────
-6. ✅ VALIDATE STRUCTURE
+6. ✅ VALIDATE STRUCTURE (`validate_json_output.py`)
 ─────────────────────────────
-Ensure chunk structure is valid JSON and properly formed.
-
-Script:
-  `scripts/validate_json_output.py`
+* Ensures JSON structure is valid and complete
+* Checks for `source`, `content`, `metadata`
 
 ─────────────────────────────
-7. 🎯 READY FOR EMBEDDING
+7. 🧹 FILTER BOILERPLATE (`filter_chunks.py`)
 ─────────────────────────────
-Each JSON in `/split/` is ready for vector embedding or LLM-based RAG querying.
+* Removes disclaimer/legal footer text
+* Deduplicates chunks using content hashes
 
-You now have per-document, clean, semantically chunked JSONs, tagged with origin + title.
+─────────────────────────────
+8. 📏 SIZE CHECK (`check_split_file_sizes.py`)
+─────────────────────────────
+* Warns if any final file >50MB
+* Prints char counts and file stats
+
+─────────────────────────────
+9. 🔁 RECOVERY PIPELINE
+─────────────────────────────
+Used when Apify times out or you want to rerun downstream steps.
+
+```
+recover_apify_run <RUN_ID>
+make post
+````
+
+Output:
+→ `/full/unified-clean.json`, `/split/*.json`
+
+─────────────────────────────
+10\. 🎯 READY FOR EMBEDDING
+─────────────────────────────
+Each `.json` in `/split/` is:
+
+* Chunked semantically
+* Cleaned + deduplicated
+* Labeled by source
+* Structurally valid
+* Size-compliant for TypingMind or vector DBs
+

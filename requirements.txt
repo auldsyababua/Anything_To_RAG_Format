@@ -1,23 +1,23 @@
 # Core parsing
-PyMuPDF==1.23.9
-nltk==3.8.1
+PyMuPDF==1.23.9          # PDF parser
+nltk==3.8.1              # Sentence tokenizer
 
 # HTML and EPUB handling
-beautifulsoup4==4.12.3
-ebooklib==0.18
+beautifulsoup4==4.12.3   # HTML parsing
+ebooklib==0.18           # EPUB support
 
 # JSON processing and utilities
-pandas==2.2.2
+pandas==2.2.2            # Optional: tabular output, diagnostics
 
 # Optional GUI (if using pdf_gui.py)
-tk
+tk                      # PDF preview interface (optional)
 
 # LLM embedding-compatible
-tiktoken==0.5.1
-openai==1.23.2
+tiktoken==0.5.1          # Token counting (OpenAI-compatible)
+openai==1.23.2           # For embedding/testing with OpenAI
 
 # API secrets and environment config
-python-dotenv==1.0.1
+python-dotenv==1.0.1     # .env-based config for secrets, paths
 
 # HTTP client library used to interact with the Apify API
 requests==2.31.0
