@@ -1,11 +1,8 @@
-Here is your fully updated `getting-started.md`, with all recent improvements and environment-driven configuration reflected:
-
----
-
-````markdown
 # 🧠 RAGFormatter Setup Guide
 
 This guide helps you run `ragformatter.py` with your own **Apify account**, **API token**, and **pipeline setup**, entirely independent from Colin's environment.
+
+Repo URL: https://github.com/auldsyababua/Anything_To_RAG_Format
 
 ---
 
