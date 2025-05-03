@@ -1,31 +1,25 @@
+# scripts/ragformatter.py
 
-import os
 import sys
 import time
 import json
 import argparse
 import urllib.parse
 import urllib.request
-from pathlib import Path
-from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import requests
 import subprocess
+from pathlib import Path
 
-# ─────────────────────────────────────────────
-# ✅ CONFIGURATION
-# ─────────────────────────────────────────────
-REPO_ROOT = Path("/Users/colinaulds/Desktop/clean-gpt-json")
-INGESTION_SOURCE = REPO_ROOT / "ingestion_source"
-ACTOR_TASK_ID = "caulds989/website-crawler-rag"
+# Allow import of config.py from project root
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-# Load .env if it exists
-load_dotenv()
-APIFY_TOKEN = os.getenv("APIFY_TOKEN")
-
-if not APIFY_TOKEN:
-    print("[ERROR] APIFY_TOKEN not set. Add it to your .zshrc or create a .env file.")
-    sys.exit(1)
+# Load all paths and credentials from config.py
+from config import (
+    REPO_ROOT,
+    INGESTION_SOURCE,
+    APIFY_TOKEN
+)
 
 # ─────────────────────────────────────────────
 # 🔍 UTILITY FUNCTIONS
@@ -33,7 +27,11 @@ if not APIFY_TOKEN:
 
 def parse_sitemap(sitemap_url):
     print(f"[INFO] Fetching sitemap from {sitemap_url}")
-    with urllib.request.urlopen(sitemap_url) as res:
+    req = urllib.request.Request(
+        sitemap_url,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; clean-gpt-json/1.0)"}
+    )
+    with urllib.request.urlopen(req) as res:
         soup = BeautifulSoup(res.read(), "xml")
     return [loc.text.strip() for loc in soup.find_all("loc")]
 
@@ -47,37 +45,68 @@ def matches_path_prefix(url, filters):
 
 def build_actor_payload(urls):
     return {
-        "startUrls": [{"url": url, "method": "GET"} for url in urls],
-        "saveMarkdown": True,
-        "saveHtml": True,
-        "removeElementsCssSelector": "script, style, noscript",
+        "aggressivePrune": True,
+        "clickElementsCssSelector": "[aria-expanded=\"false\"]",
+        "clientSideMinChangePercentage": 15,
+        "crawlerType": "playwright:adaptive",
+        "debugLog": False,
+        "debugMode": False,
+        "expandIframes": True,
+        "ignoreCanonicalUrl": True,
+        "includeUrlGlobs": [{"glob": ""}],
+        "keepUrlFragments": False,
+        "proxyConfiguration": {"useApifyProxy": True},
+        "readableTextCharThreshold": 100,
         "removeCookieWarnings": True,
-        "crawlerType": "playwright:adaptive"
+        "removeElementsCssSelector": (
+            "nav, footer, script, style, noscript, svg, img[src^='data:'],"
+            "[role=\"alert\"],[role=\"banner\"],[role=\"dialog\"],[role=\"alertdialog\"],"
+            "[role=\"region\"][aria-label*=\"skip\" i],[aria-modal=\"true\"]"
+        ),
+        "renderingTypeDetectionPercentage": 10,
+        "respectRobotsTxtFile": False,
+        "saveFiles": True,
+        "saveHtml": True,
+        "saveHtmlAsFile": True,
+        "saveMarkdown": True,
+        "saveScreenshots": False,
+        "useSitemaps": True,
+        "startUrls": [{"url": url, "method": "GET"} for url in urls]
     }
 
 def trigger_apify_run(input_payload):
-    print("[INFO] Triggering Apify task run...")
-    res = requests.post(
-        f"https://api.apify.com/v2/actor-tasks/{ACTOR_TASK_ID}/runs?token={APIFY_TOKEN}",
-        json={"input": input_payload}
-    )
+    print("[INFO] Triggering Apify actor run (async)...")
+    url = "https://api.apify.com/v2/acts/apify~website-content-crawler/runs"
+    headers = {
+        "Authorization": f"Bearer {APIFY_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    res = requests.post(url, json={"input": input_payload}, headers=headers)
     res.raise_for_status()
-    return res.json()["data"]["id"]
-
+    return res.json()["data"]["id"]  # this is the runId for polling
 
 
 def poll_apify(run_id):
     print("[INFO] Waiting for Apify actor to finish...")
-    status_url = f"https://api.apify.com/v2/actor-runs/{run_id}?token={APIFY_TOKEN}"
+    url = f"https://api.apify.com/v2/actor-runs/{run_id}"
+    headers = {
+        "Authorization": f"Bearer {APIFY_TOKEN}"
+    }
+
     while True:
-        res = requests.get(status_url).json()
-        status = res["data"]["status"]
+        res = requests.get(url, headers=headers)
+        res.raise_for_status()
+        data = res.json()["data"]
+        status = data["status"]
+        print(f"[DEBUG] Status: {status}")
         if status in {"SUCCEEDED", "FAILED", "ABORTED"}:
-            print(f"[INFO] Crawl finished with status: {status}")
             if status != "SUCCEEDED":
+                print(f"[ERROR] Crawl finished with status: {status}")
                 sys.exit(1)
-            return res["data"]["defaultDatasetId"]
+            print("[INFO] Crawl finished successfully.")
+            return data["defaultDatasetId"]
         time.sleep(10)
+
 
 def download_dataset(dataset_id, output_path):
     print("[INFO] Downloading dataset...")
@@ -98,17 +127,32 @@ def run_clean_pipeline():
 # ─────────────────────────────────────────────
 
 def main():
+    """
+    End-to-end runner:
+    - Parses sitemap and filters URLs
+    - Submits to Apify and waits for crawl
+    - Downloads JSON and stores in ingestion_source/
+    - Triggers full local pipeline via `make run`
+
+    Final output:
+    - full/unified-clean.json
+    - split/{doc_id}.json
+    """
     parser = argparse.ArgumentParser(
-        description="Fetch sitemap, crawl docs, and chunk for RAG.")
+        description="Fetch sitemap, crawl docs, and chunk for RAG."
+    )
     parser.add_argument("sitemap_url", help="Sitemap URL")
     parser.add_argument("filters", nargs="*", help="Path prefix filters (e.g., guides, examples/setup)")
     args = parser.parse_args()
 
-    # Step 1: Parse and filter sitemap
     all_urls = parse_sitemap(args.sitemap_url)
     filtered_urls = [
         u for u in all_urls if not args.filters or matches_path_prefix(u, args.filters)
     ]
+
+    if all(u.endswith(".xml") for u in filtered_urls):
+        print("[ERROR] Sitemap returned only XML links — are you passing a sitemap index instead of a page sitemap?")
+        sys.exit(1)
 
     if not filtered_urls:
         print("[ERROR] No URLs matched the given filters.")
@@ -116,24 +160,16 @@ def main():
 
     print(f"[INFO] {len(filtered_urls)} URLs matched filters.")
 
-    # Step 2: Build Apify payload
     payload = build_actor_payload(filtered_urls)
-
-    # Step 3: Trigger crawl
     run_id = trigger_apify_run(payload)
-
-    # Step 4: Poll until completion
     dataset_id = poll_apify(run_id)
 
-    # Step 5: Save output to ingestion_source
     domain = extract_domain(filtered_urls[0])
     filename = f"{domain.replace('.', '_')}_crawl.json"
     output_path = INGESTION_SOURCE / filename
     download_dataset(dataset_id, output_path)
 
-    # Step 6: Run local clean-gpt-json pipeline
     run_clean_pipeline()
-
     print(f"[✅] All done. Data processed and chunked from {filename}.")
 
 if __name__ == "__main__":

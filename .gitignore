@@ -66,3 +66,6 @@ coverage.xml
 
 # Others
 *.sqlite3
+
+# Ignore devlog (personal file)
+devlog.md

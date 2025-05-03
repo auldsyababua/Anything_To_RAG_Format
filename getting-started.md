@@ -1,67 +1,59 @@
-Here’s a clean **setup guide** you can share with others so they can use your `ragformatter` workflow—but on **their own Apify account**, with **their own token**, and without affecting your tasks or usage.
+Here is your fully updated `getting-started.md`, with all recent improvements and environment-driven configuration reflected:
 
 ---
 
-## 📄 RAGFormatter Setup for Independent Use
+````markdown
+# 🧠 RAGFormatter Setup Guide
 
-This guide walks you through setting up `ragformatter`, a command-line tool to:
-
-1. Fetch a sitemap
-2. Filter and submit pages to Apify’s Website Content Crawler
-3. Download the results
-4. Feed the output into a local chunking pipeline for RAG systems
+This guide helps you run `ragformatter.py` with your own **Apify account**, **API token**, and **pipeline setup**, entirely independent from Colin's environment.
 
 ---
 
-### ✅ Step 1: Clone the Crawler Task
+## 🚀 What Is RAGFormatter?
 
-1. **Sign up or log in** to Apify: [https://apify.com/](https://apify.com/)
-2. Visit this public actor (used by `ragformatter`):
-   👉 [https://apify.com/apify/website-content-crawler](https://apify.com/apify/website-content-crawler)
-3. Click **“Try Actor”** → then **“Save as Task”**
-4. Name it something like `rag-runner`
-5. Set up any dummy input and click **Save**
-6. Note your **task ID**, which will look like:
+`ragformatter.py` is a CLI script that:
 
-   ```
-   your-username~rag-runner
-   ```
+1. Parses a sitemap
+2. Sends URLs to Apify’s Website Content Crawler
+3. Waits for the crawl to finish
+4. Downloads the results to `ingestion_source/`
+5. Triggers the full local RAG preprocessing pipeline
 
 ---
 
-### ✅ Step 2: Set Up Your Token
+## ✅ Step 1: Clone the Apify Task
 
-1. Go to: [https://console.apify.com/account/integrations](https://console.apify.com/account/integrations)
-2. Copy your **API token**
-3. Add it to your environment:
+1. Sign in to [apify.com](https://apify.com/)
+2. Visit the actor page:  
+   👉 https://apify.com/apify/website-content-crawler
+3. Click **“Try Actor”** → **“Save as Task”**
+4. Name the task `rag-runner` or similar
+5. Save it (you can use any sample input)
+6. Copy your task ID:
 
-#### Option A: Add to `~/.zshrc` or `~/.bashrc`
+```text
+your-username~rag-runner
+````
 
-```bash
-export APIFY_TOKEN="your-actual-token-here"
-```
+---
 
-Then run:
+## ✅ Step 2: Set Up Your `.env`
 
-```bash
-source ~/.zshrc  # or ~/.bashrc
-```
-
-#### Option B: Use a `.env` file
+Create a `.env` file at the repo root (same level as `ragformatter.py`):
 
 ```env
-APIFY_TOKEN=your-actual-token-here
+APIFY_TOKEN=your_apify_token_here
+REPO_ROOT=/absolute/path/to/clean-gpt-json
+OUTPUT_ROOT=/absolute/path/to/doc-lib
 ```
 
-Make sure this is in the same directory as `ragformatter.py`.
+These are used by `config.py` and all pipeline scripts.
 
 ---
 
-### ✅ Step 3: Download the Script
+## ✅ Step 3: Update the Script
 
-Download `ragformatter.py` from Colin (or this repo). Place it in your project folder or install globally.
-
-Update this line near the top of the script:
+In `ragformatter.py`, make sure this constant is correct:
 
 ```python
 ACTOR_TASK_ID = "your-username~rag-runner"
@@ -69,49 +61,166 @@ ACTOR_TASK_ID = "your-username~rag-runner"
 
 ---
 
-### ✅ Step 4: Install Dependencies
+## ✅ Step 4: Install Everything
 
-From your project folder (ideally inside a virtualenv):
+Set up the environment:
 
 ```bash
-pip install -r requirements.txt
+make install
 ```
 
-**Minimal requirements:**
-
-```
-requests
-python-dotenv
-beautifulsoup4
-```
+This creates a virtualenv and installs all dependencies from `requirements.txt`.
 
 ---
 
-### ✅ Step 5: Run It
+## ✅ Step 5: Run It!
 
 ```bash
-python3 ragformatter.py https://docs.example.com/sitemap.xml guides examples/setup
+python3 ragformatter.py https://docs.example.com/sitemap.xml
 ```
 
 This will:
 
 * Parse the sitemap
-* Filter to matching URLs
-* Submit the crawl job
-* Wait for it to finish
-* Download the results to `ingestion_source/`
-* Automatically trigger your local RAG pipeline
+* Crawl the pages
+* Download the structured content
+* Feed it into `make run`
+
+You’ll get final output like:
+
+* `doc-lib/full/unified-clean.json`
+* `doc-lib/split/unraid-docs.json` (or multiple if >50MB)
+* Schema-validated, title-injected, size-checked chunks
 
 ---
 
-### ✅ Optional: Make It Global
+## ✅ (Optional) Shell Alias
 
-Add this to your `~/.zshrc`:
+Add this to your `~/.zshrc` or `~/.bashrc`:
 
 ```bash
-alias ragformatter='python3 /path/to/your/ragformatter.py'
+alias ragformatter='python3 /absolute/path/to/ragformatter.py'
+```
+
+Reload your shell:
+
+```bash
+source ~/.zshrc
+```
+
+Now you can run:
+
+```bash
+ragformatter https://docs.example.com/sitemap.xml
 ```
 
 ---
 
-Let me know if you want this turned into a sharable PDF or Markdown file.
+## ✅ Output Structure
+
+```bash
+OUTPUT_ROOT/
+├── full/
+│   └── unified-clean.json
+├── split/
+│   └── yourdomain.json
+└── ...
+```
+
+---
+
+## ✅ Recovery Shortcut
+
+If your Apify crawl finishes but the local script crashes:
+
+```bash
+recover_apify_run <RUN_ID>
+```
+
+This will:
+
+* Download the results
+* Save to `ingestion_source/recovered_crawl.json`
+* Resume the pipeline via `make post`
+
+---
+
+## ✅ For Collaborators
+
+* Use `.env.example` to share the setup
+* Keep real tokens in `.env` (gitignored)
+* Set paths using `REPO_ROOT` and `OUTPUT_ROOT`
+* All Make targets are defined in the `Makefile`
+
+Great — here's the **VSCode Tasks + Quickstart section** to add at the bottom of your `getting-started.md`:
+
+---
+
+## ✅ VSCode Task Integration (Optional)
+
+If you're using VSCode, you can define custom tasks to trigger the pipeline directly from the Command Palette or sidebar.
+
+1. Create `.vscode/tasks.json`:
+
+```
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run RAG Pipeline",
+      "type": "shell",
+      "command": "make run",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Recover Apify Run",
+      "type": "shell",
+      "command": "recover_apify_run ${input:runId}",
+      "problemMatcher": [],
+      "dependsOn": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "runId",
+      "type": "promptString",
+      "description": "Enter Apify Run ID"
+    }
+  ]
+}
+````
+
+2. Now run:
+
+* `Cmd+Shift+P` → `Tasks: Run Task` → Select `Run RAG Pipeline` or `Recover Apify Run`
+
+---
+
+## ✅ Quickstart Recap
+
+```
+# Setup
+make install
+cp .env.example .env  # edit paths + token
+
+# Crawl + process
+python3 ragformatter.py https://example.com/sitemap.xml
+
+# Recovery if timeout
+recover_apify_run <RUN_ID>
+make post
+```
+
+# Final files in OUTPUT_ROOT:
+# full/unified-clean.json
+# split/<domain>.json
+
+---
+

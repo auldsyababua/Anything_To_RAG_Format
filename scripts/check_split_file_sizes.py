@@ -1,27 +1,64 @@
 # scripts/check_split_file_sizes.py
 
+# ----------------------------------------
+# Split File Size Checker
+# ----------------------------------------
+# - Walks all .json files in the split/ directory
+# - Warns if any file exceeds 50MB (e.g. for TypingMind)
+# - Prints size in MB + character count
+# - Acts as a sanity check after file splitting
+# ----------------------------------------
+
+import os
+import sys
 import json
+import argparse
 from pathlib import Path
-from config import SPLIT_DIR
+
+# Import configured SPLIT_DIR from project root
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import SPLIT_DIR as DEFAULT_DIR
+
+# Max safe size in bytes (50MB threshold)
+MAX_BYTES = 50 * 1024 * 1024
 
 # ----------------------------------------
-# File Size and Character Counter
+# Check each file in the split output directory
 # ----------------------------------------
-# Prints file size (MB) and total character count for each .json in /split
-# Flags files exceeding 50MB for downstream embedding constraints.
+def check_file_sizes(directory: Path):
+    too_large = []
 
-MAX_MB = 50
-BYTES_LIMIT = MAX_MB * 1024 * 1024
+    print(f"\n[🔍] Checking files in: {directory}")
 
-for fpath in SPLIT_DIR.glob("*.json"):
-    size = fpath.stat().st_size
-    try:
-        data = json.loads(fpath.read_text(encoding="utf-8"))
-        chars = sum(len(entry["content"]) for entry in data if "content" in entry)
-    except Exception as e:
-        print(f"❌ {fpath.name} — parse error: {e}")
-        continue
+    for file in directory.glob("*.json"):
+        size_bytes = os.path.getsize(file)
+        size_mb = round(size_bytes / (1024 * 1024), 2)
 
-    print(f"{fpath.name} → {size / 1024 / 1024:.1f}MB, {chars:,} chars")
-    if size > BYTES_LIMIT:
-        print(f"❌ EXCEEDS LIMIT")
+        data = json.loads(file.read_text(encoding="utf-8"))
+        char_count = sum(len(c.get("content", "")) for c in data)
+
+        tag = "⚠️ OVER 50MB" if size_bytes > MAX_BYTES else "OK"
+        print(f"{file.name:40}  | {size_mb:6} MB  | {char_count:>7} chars  | {tag}")
+
+        if size_bytes > MAX_BYTES:
+            too_large.append(file.name)
+
+    if too_large:
+        print("\n[❌] Warning: Some files exceed 50MB and may break LLM tools.")
+        sys.exit(1)
+    else:
+        print("\n[✅] All files are under 50MB.")
+
+# ----------------------------------------
+# CLI entrypoint
+# ----------------------------------------
+def main():
+    parser = argparse.ArgumentParser(description="Warn if any output .json files are over 50MB.")
+    parser.add_argument("--input", type=str, default=DEFAULT_DIR, help="Directory with split .json files")
+    args = parser.parse_args()
+
+    target_dir = Path(args.input)
+    check_file_sizes(target_dir)
+
+if __name__ == "__main__":
+    main()
