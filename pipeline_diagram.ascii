@@ -51,7 +51,7 @@ ingestion_source/               full/unified.json
 ─────────────────────────────
 3. 🧹 CLEAN TEXT (`clean_json_chunks.py`)
 ─────────────────────────────
-* Removes markdown image links, raw HTML tags, SVGs
+* Removes markdown image links, raw HTML tags, SVGs, etc.
 * Filters short or empty junk chunks
 * Infers fallback titles from headings
 

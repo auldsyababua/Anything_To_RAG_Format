@@ -2,7 +2,9 @@
 
 ## Purpose
 
-**clean-gpt-json** is a format-agnostic document ingestion and chunking pipeline for Retrieval-Augmented Generation (RAG). It processes PDFs, Markdown, JSON crawls, HTML, and EPUBs into clean, semantic chunks with token-aware overlap. Output is ready for embedding into vector stores or downstream LLM consumption.
+**Anything_To_RAG_Format** is a format-agnostic document ingestion and chunking pipeline for Retrieval-Augmented Generation (RAG). It processes PDFs, Markdown, JSON crawls, HTML, and EPUBs into clean, semantic chunks with token-aware overlap. Output is ready for embedding into vector stores or downstream LLM consumption.
+
+Repo URL: https://github.com/auldsyababua/Anything_To_RAG_Format
 
 ---
 
