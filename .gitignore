@@ -12,7 +12,7 @@ venv/
 gui-env/
 semantic-rag-env/
 
-# Jupyter notebooks checkpoint files (if you ever use them)
+# Jupyter notebooks checkpoint files
 .ipynb_checkpoints/
 
 # Logs
@@ -30,6 +30,7 @@ Thumbs.db
 *.egg-info/
 *.eggs/
 pip-wheel-metadata/
+.env
 *.env
 .env/
 
@@ -50,22 +51,23 @@ build/
 *.bak
 *.tmp
 
-# pyenv and pipenv files (if not needed in Git)
-python-version
-pipenv.lock
-
-# VS Code workspace storage
-.vscode/
-
-# MacOS specific
-.DS_Store
-
 # Coverage reports
 htmlcov/
 coverage.xml
 
-# Others
+# SQLite files
 *.sqlite3
 
-# Ignore devlog (personal file)
+# Dev logs
 devlog.md
+
+# Deprecated scripts
+depracated_scripts/
+
+# Keep only empty folders (with .gitkeep)
+ingestion_source/*
+ready_to_crawl/*
+full/*
+!ingestion_source/.gitkeep
+!ready_to_crawl/.gitkeep
+!full/.gitkeep
