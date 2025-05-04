@@ -1,5 +1,3 @@
-# scripts/ragformatter.py
-
 import sys
 import time
 import json
@@ -8,23 +6,17 @@ import requests
 import subprocess
 from pathlib import Path
 
+# Add the project root to sys.path to access config.py
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 # Import logging setup from config.py
-from config import setup_logging
+from config import setup_logging, REPO_ROOT, INGESTION_SOURCE, APIFY_TOKEN
 
 # Call the setup function to configure logging
 setup_logging()
 
 # Now you can use logging throughout the script
 import logging
-
-# Allow import of config.py from project root
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-
-from config import (
-    REPO_ROOT,
-    INGESTION_SOURCE,
-    APIFY_TOKEN
-)
 
 def build_actor_payload(domain, filters):
     include_globs = [{"glob": f"{domain.rstrip('/')}/{f.strip('/')}**"} for f in filters]

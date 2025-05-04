@@ -65,12 +65,34 @@ LOG_FILE = LOGS_DIR / "pipeline_log.txt"
 # Ensure the logs directory exists
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Function to setup logging
+# Logging configuration
+# ----------------------------------------------
+# You can change the logging level to control 
+# the verbosity of logs. Here's a list of available levels:
+#
+# - logging.DEBUG: Logs everything, including debug-level details.
+#   Use this when you need detailed information for debugging.
+#
+# - logging.INFO: Logs informational messages, warnings, errors, and critical messages.
+#   Use this for normal operation and to track important milestones.
+#
+# - logging.WARNING: Logs only warnings, errors, and critical messages.
+#   Use this when you only want to see potential issues and higher severity events.
+#
+# - logging.ERROR: Logs errors and critical messages only.
+#   Use this if you're interested in logging only when something goes wrong.
+#
+# - logging.CRITICAL: Logs only critical errors that could prevent the program from running.
+#   Use this for tracking the most severe failures.
+#
+# Change the level according to your needs by setting it in the `level` parameter.
+
 def setup_logging():
     import logging
-
     logging.basicConfig(
         filename=LOG_FILE,  # Log file inside the repo
-        level=logging.INFO,  # Log everything at INFO level and above
+        level=logging.INFO,  # Change the levels listed above here
         format='%(asctime)s - %(message)s'  # Log format with timestamp
     )
+
+
