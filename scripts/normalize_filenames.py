@@ -17,6 +17,15 @@ import unicodedata
 import argparse
 from pathlib import Path
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # Load ingestion source directory from config
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import INGESTION_SOURCE
@@ -63,11 +72,17 @@ def normalize_filenames(dry_run=False):
 # CLI entrypoint
 # ----------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Standardize filenames to safe snake_case.")
-    parser.add_argument("--dry-run", action="store_true", help="Preview changes without renaming files")
-    args = parser.parse_args()
+    logging.info("Script started: normalize_filenames.py")
+    try:
+        parser = argparse.ArgumentParser(description="Standardize filenames to safe snake_case.")
+        parser.add_argument("--dry-run", action="store_true", help="Preview changes without renaming files")
+        args = parser.parse_args()
 
-    normalize_filenames(dry_run=args.dry_run)
+        normalize_filenames(dry_run=args.dry_run)
+        logging.info("Script finished successfully: normalize_filenames.py")
+    except Exception as e:
+        logging.error(f"Script failed: normalize_filenames.py, Error: {str(e)}")
+        raise
 
 if __name__ == "__main__":
     main()

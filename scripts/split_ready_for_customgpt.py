@@ -8,6 +8,15 @@ from collections import defaultdict
 import sys, os
 from urllib.parse import urlparse
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # ----------------------------------------
 # Chunk Splitter for CustomGPT Compatibility
 # ----------------------------------------
@@ -64,3 +73,35 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 for group_key, entries in groups.items():
     out_path = OUTPUT_DIR / f"{normalize(group_key)}.json"
     out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=2))
+
+def main():
+    logging.info("Script started: split_ready_for_customgpt.py")
+    try:
+        # Load cleaned merged chunk list from full output file
+        chunks = json.loads(INPUT_FILE.read_text(encoding="utf-8"))
+
+        # Group chunks by normalized domain (project root)
+        groups = defaultdict(list)
+        for chunk in chunks:
+            group_key = get_group_key(chunk)
+            groups[group_key].append({
+                "source": chunk["source"],
+                "content": chunk["content"],
+                "metadata": chunk.get("metadata", {})
+            })
+
+        # Ensure output directory exists
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+        # Write one .json file per group (by normalized domain name)
+        for group_key, entries in groups.items():
+            out_path = OUTPUT_DIR / f"{normalize(group_key)}.json"
+            out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=2))
+
+        logging.info("Script finished successfully: split_ready_for_customgpt.py")
+    except Exception as e:
+        logging.error(f"Script failed: split_ready_for_customgpt.py, Error: {str(e)}")
+        raise
+
+if __name__ == "__main__":
+    main()

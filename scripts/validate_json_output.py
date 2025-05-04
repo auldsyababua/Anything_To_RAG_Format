@@ -15,6 +15,15 @@ import sys
 import os
 from pathlib import Path
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # Load SPLIT_DIR from project root
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import SPLIT_DIR as TARGET_DIR
@@ -25,7 +34,7 @@ from config import SPLIT_DIR as TARGET_DIR
 def validate(directory: Path):
     has_error = False
 
-    print(f"\n[🔍] Validating chunk structure in: {directory}")
+    logging.info(f"Validating chunk structure in: {directory}")
 
     for file in directory.glob("*.json"):
         try:
@@ -44,22 +53,28 @@ def validate(directory: Path):
                     raise ValueError(f"Missing required keys in entry {i}.")
 
         except Exception as e:
-            print(f"❌ INVALID  {file.name}: {e}")
+            logging.error(f"INVALID {file.name}: {e}")
             has_error = True
         else:
-            print(f"✅ VALID    {file.name}")
+            logging.info(f"VALID {file.name}")
 
     if has_error:
-        print("\n[❌] Validation failed. Some files are malformed.")
+        logging.error("Validation failed. Some files are malformed.")
         sys.exit(1)
     else:
-        print("\n[✅] All files passed schema validation.")
+        logging.info("All files passed schema validation.")
 
 # ----------------------------------------
 # CLI entrypoint
 # ----------------------------------------
 def main():
-    validate(TARGET_DIR)
+    logging.info("Script started: validate_json_output.py")
+    try:
+        validate(TARGET_DIR)
+        logging.info("Script finished successfully: validate_json_output.py")
+    except Exception as e:
+        logging.error(f"Script failed: validate_json_output.py, Error: {str(e)}")
+        raise
 
 if __name__ == "__main__":
     main()

@@ -14,6 +14,14 @@ import sys
 import json
 import argparse
 from pathlib import Path
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
 
 # Import configured SPLIT_DIR from project root
 sys.path.append(str(Path(__file__).resolve().parents[1]))
@@ -28,7 +36,7 @@ MAX_BYTES = 50 * 1024 * 1024
 def check_file_sizes(directory: Path):
     too_large = []
 
-    print(f"\n[🔍] Checking files in: {directory}")
+    logging.info(f"Checking files in: {directory}")
 
     for file in directory.glob("*.json"):
         size_bytes = os.path.getsize(file)
@@ -38,27 +46,33 @@ def check_file_sizes(directory: Path):
         char_count = sum(len(c.get("content", "")) for c in data)
 
         tag = "⚠️ OVER 50MB" if size_bytes > MAX_BYTES else "OK"
-        print(f"{file.name:40}  | {size_mb:6} MB  | {char_count:>7} chars  | {tag}")
+        logging.info(f"{file.name:40}  | {size_mb:6} MB  | {char_count:>7} chars  | {tag}")
 
         if size_bytes > MAX_BYTES:
             too_large.append(file.name)
 
     if too_large:
-        print("\n[❌] Warning: Some files exceed 50MB and may break LLM tools.")
+        logging.error("Warning: Some files exceed 50MB and may break LLM tools.")
         sys.exit(1)
     else:
-        print("\n[✅] All files are under 50MB.")
+        logging.info("All files are under 50MB.")
 
 # ----------------------------------------
 # CLI entrypoint
 # ----------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Warn if any output .json files are over 50MB.")
-    parser.add_argument("--input", type=str, default=DEFAULT_DIR, help="Directory with split .json files")
-    args = parser.parse_args()
+    logging.info("Script started: check_split_file_sizes.py")
+    try:
+        parser = argparse.ArgumentParser(description="Warn if any output .json files are over 50MB.")
+        parser.add_argument("--input", type=str, default=DEFAULT_DIR, help="Directory with split .json files")
+        args = parser.parse_args()
 
-    target_dir = Path(args.input)
-    check_file_sizes(target_dir)
+        target_dir = Path(args.input)
+        check_file_sizes(target_dir)
+        logging.info("Script finished successfully: check_split_file_sizes.py")
+    except Exception as e:
+        logging.error(f"Script failed: check_split_file_sizes.py, Error: {str(e)}")
+        raise
 
 if __name__ == "__main__":
     main()

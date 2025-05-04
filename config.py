@@ -3,7 +3,7 @@
 # ------------------------------
 # Centralized Configuration File
 # ------------------------------
-# Controls all paths and parameters for RAG preprocessing pipeline.
+# Controls all paths and parameters for the RAG preprocessing pipeline.
 # Keeps everything reproducible and centralized via pathlib + .env.
 # ------------------------------
 
@@ -20,7 +20,7 @@ REPO_ROOT = Path(os.environ.get("REPO_ROOT", Path.home() / "Desktop" / "clean-gp
 OUTPUT_ROOT = Path(os.environ.get("OUTPUT_ROOT", Path.home() / "Desktop" / "doc-lib"))
 INGESTION_SOURCE = REPO_ROOT / "ingestion_source"
 
-# Sanity checks
+# Sanity checks for the directory paths
 if not REPO_ROOT.exists():
     raise FileNotFoundError(f"REPO_ROOT does not exist: {REPO_ROOT}")
 if not OUTPUT_ROOT.exists():
@@ -55,3 +55,22 @@ APIFY_TOKEN = os.getenv("APIFY_TOKEN")
 
 if not APIFY_TOKEN:
     raise ValueError("Missing APIFY_TOKEN in environment")
+
+# === Logging Configuration ===
+
+# Log directory and file inside the repo
+LOGS_DIR = REPO_ROOT / "logs"
+LOG_FILE = LOGS_DIR / "pipeline_log.txt"
+
+# Ensure the logs directory exists
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Function to setup logging
+def setup_logging():
+    import logging
+
+    logging.basicConfig(
+        filename=LOG_FILE,  # Log file inside the repo
+        level=logging.INFO,  # Log everything at INFO level and above
+        format='%(asctime)s - %(message)s'  # Log format with timestamp
+    )
