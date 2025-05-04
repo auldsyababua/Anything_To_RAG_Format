@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 import requests
 import subprocess
 from pathlib import Path
+import random
+import string
 
 # Allow import of config.py from project root
 sys.path.append(str(Path(__file__).resolve().parents[1]))
@@ -45,34 +47,52 @@ def matches_path_prefix(url, filters):
 
 def build_actor_payload(urls):
     return {
-        "aggressivePrune": True,
-        "clickElementsCssSelector": "[aria-expanded=\"false\"]",
-        "clientSideMinChangePercentage": 15,
+        "startUrls": [{"url": url, "method": "GET"} for url in urls],
+        "useSitemaps": True,
+        "respectRobotsTxtFile": False,
         "crawlerType": "playwright:adaptive",
-        "debugLog": False,
-        "debugMode": False,
-        "expandIframes": True,
-        "ignoreCanonicalUrl": True,
-        "includeUrlGlobs": [{"glob": ""}],
+        "includeUrlGlobs": [],
+        "excludeUrlGlobs": [],
         "keepUrlFragments": False,
+        "ignoreCanonicalUrl": False,
+        "maxCrawlDepth": 20,
+        "maxCrawlPages": 9999999,
+        "initialConcurrency": 0,
+        "maxConcurrency": 200,
+        "initialCookies": [],
         "proxyConfiguration": {"useApifyProxy": True},
-        "readableTextCharThreshold": 100,
-        "removeCookieWarnings": True,
+        "maxSessionRotations": 10,
+        "maxRequestRetries": 5,
+        "requestTimeoutSecs": 60,
+        "minFileDownloadSpeedKBps": 128,
+        "dynamicContentWaitSecs": 10,
+        "waitForSelector": "",
+        "softWaitForSelector": "",
+        "maxScrollHeightPixels": 5000,
+        "keepElementsCssSelector": "",
         "removeElementsCssSelector": (
             "nav, footer, script, style, noscript, svg, img[src^='data:'],"
             "[role=\"alert\"],[role=\"banner\"],[role=\"dialog\"],[role=\"alertdialog\"],"
             "[role=\"region\"][aria-label*=\"skip\" i],[aria-modal=\"true\"]"
         ),
-        "renderingTypeDetectionPercentage": 10,
-        "respectRobotsTxtFile": False,
-        "saveFiles": True,
-        "saveHtml": True,
-        "saveHtmlAsFile": True,
+        "removeCookieWarnings": True,
+        "expandIframes": True,
+        "clickElementsCssSelector": "[aria-expanded=\"false\"]",
+        "htmlTransformer": "readableText",
+        "readableTextCharThreshold": 100,
+        "aggressivePrune": False,
+        "debugMode": False,
+        "debugLog": False,
+        "saveHtml": False,
+        "saveHtmlAsFile": False,
         "saveMarkdown": True,
+        "saveFiles": False,
         "saveScreenshots": False,
-        "useSitemaps": True,
-        "startUrls": [{"url": url, "method": "GET"} for url in urls]
+        "maxResults": 9999999,
+        "clientSideMinChangePercentage": 15,
+        "renderingTypeDetectionPercentage": 10
     }
+
 
 def trigger_apify_run(input_payload):
     print("[INFO] Triggering Apify actor run (async)...")
@@ -81,9 +101,18 @@ def trigger_apify_run(input_payload):
         "Authorization": f"Bearer {APIFY_TOKEN}",
         "Content-Type": "application/json"
     }
-    res = requests.post(url, json={"input": input_payload}, headers=headers)
+    print("DEBUG - Apify Payload:", json.dumps(input_payload, indent=2))
+    res = requests.post(url, json=input_payload, headers=headers)
+
+    if not res.ok:
+        print("[ERROR] Apify response:", res.text)
+
     res.raise_for_status()
-    return res.json()["data"]["id"]  # this is the runId for polling
+
+    run_id = res.json()["data"]["id"]
+    print(f"[INFO] Apify run ID: {run_id}")
+    return run_id
+
 
 
 def poll_apify(run_id):
