@@ -15,6 +15,15 @@ import os
 import sys
 from pathlib import Path
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # Load ingestion folder from config
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import INGESTION_SOURCE
@@ -23,6 +32,7 @@ from config import INGESTION_SOURCE
 # Analyze a single PDF for extractability
 # ----------------------------------------
 def analyze_pdf(path: Path) -> dict:
+    # analyzes the PDF
     try:
         doc = fitz.open(path)
         total_pages = len(doc)
@@ -34,6 +44,7 @@ def analyze_pdf(path: Path) -> dict:
             "ratio": round(100 * extractable_pages / max(1, total_pages), 1)
         }
     except Exception as e:
+        logging.error(f"Error analyzing PDF: {path.name}, Error: {str(e)}")  # Log the error
         return {
             "filename": path.name,
             "pages": 0,
@@ -46,24 +57,31 @@ def analyze_pdf(path: Path) -> dict:
 # Walk the ingestion folder and analyze all PDFs
 # ----------------------------------------
 def main():
+    logging.info("Script started: analyze_pdf_folder.py")  # Log when the script starts
+
     pdfs = list(INGESTION_SOURCE.rglob("*.pdf"))
     if not pdfs:
-        print(f"[INFO] No PDFs found in {INGESTION_SOURCE}")
+        logging.info(f"No PDFs found in {INGESTION_SOURCE}")  # Log if no PDFs are found
         return
 
-    print(f"\n[📄] PDF Pre-Check: {len(pdfs)} file(s) found in {INGESTION_SOURCE}\n")
+    logging.info(f"\n[📄] PDF Pre-Check: {len(pdfs)} file(s) found in {INGESTION_SOURCE}\n")
     header = f"{'File':40} | Pages | Text Pages | % Text"
-    print(header)
-    print("-" * len(header))
+    logging.info(header)
+    logging.info("-" * len(header))
 
     for pdf in pdfs:
         result = analyze_pdf(pdf)
-        print(f"{result['filename'][:40]:40} | "
-              f"{result['pages']:>5}  | "
-              f"{result['text_pages']:>10}  | "
-              f"{result['ratio']:>6}%")
+        logging.info(f"{result['filename'][:40]:40} | "
+                     f"{result['pages']:>5}  | "
+                     f"{result['text_pages']:>10}  | "
+                     f"{result['ratio']:>6}%")
 
-    print("\n[✅] PDF audit complete.\n")
+    logging.info("\n[✅] PDF audit complete.\n")
+    logging.info("Script finished successfully: analyze_pdf_folder.py")  # Log success when done
 
+# Main entry point of the script
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logging.error(f"Script failed: analyze_pdf_folder.py, Error: {str(e)}")  # Log the script failure

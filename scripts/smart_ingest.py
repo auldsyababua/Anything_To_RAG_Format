@@ -18,6 +18,15 @@ import os
 from pathlib import Path
 from nltk.tokenize import sent_tokenize
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # Ensure sentence tokenizer is downloaded
 nltk.download('punkt', quiet=True)
 
@@ -211,16 +220,22 @@ def process_file(path: Path) -> list:
 # Entry Point: Walk folder → process → save output
 # ----------------------------------------
 def main():
-    all_chunks = []
+    logging.info("Script started: smart_ingest.py")
+    try:
+        all_chunks = []
 
-    for path in INGESTION_SOURCE.rglob("*"):
-        if path.suffix.lower() in [".pdf", ".md", ".json", ".html", ".epub"]:
-            all_chunks.extend(process_file(path))
+        for path in INGESTION_SOURCE.rglob("*"):
+            if path.suffix.lower() in [".pdf", ".md", ".json", ".html", ".epub"]:
+                all_chunks.extend(process_file(path))
 
-    with open(FULL_OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(all_chunks, f, indent=2, ensure_ascii=False)
+        with open(FULL_OUTPUT_FILE, "w", encoding="utf-8") as f:
+            json.dump(all_chunks, f, indent=2, ensure_ascii=False)
 
-    print(f"[✅] Ingestion complete. {len(all_chunks)} chunks → {FULL_OUTPUT_FILE}")
+        logging.info("Script finished successfully: smart_ingest.py")
+        print(f"[✅] Ingestion complete. {len(all_chunks)} chunks → {FULL_OUTPUT_FILE}")
+    except Exception as e:
+        logging.error(f"Script failed: smart_ingest.py, Error: {str(e)}")
+        raise
 
 if __name__ == "__main__":
     main()

@@ -16,6 +16,15 @@ from urllib.parse import urlparse
 from pathlib import Path
 from collections import defaultdict
 
+# Import logging setup from config.py
+from config import setup_logging
+
+# Call the setup function to configure logging
+setup_logging()
+
+# Now you can use logging throughout the script
+import logging
+
 # Import config paths
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import CLEAN_FULL_OUTPUT_FILE, SPLIT_DIR
@@ -71,11 +80,17 @@ def write_chunks(grouped_chunks: dict, output_dir: Path):
             filename = f"{domain}{suffix}.json"
             out_path = output_dir / filename
 
-            with open(out_path, "w", encoding="utf-8") as f:
-                json.dump(part, f, indent=2, ensure_ascii=False)
+            try:
+                with open(out_path, "w", encoding="utf-8") as f:
+                    json.dump(part, f, indent=2, ensure_ascii=False)
+                logging.info(f"Successfully wrote {filename} to disk")  # Log successful write
+            except Exception as e:
+                logging.error(f"Failed to write {filename} to disk, Error: {str(e)}")  # Log failure
 
 # Main CLI entrypoint
 def main():
+    logging.info("Script started: split_large_json_files.py")  # Log when the script starts
+
     parser = argparse.ArgumentParser(description="Split large JSONs by domain slug.")
     parser.add_argument("--input", type=str, default=CLEAN_FULL_OUTPUT_FILE, help="Input cleaned file")
     parser.add_argument("--output", type=str, default=SPLIT_DIR, help="Output directory for split files")
@@ -84,11 +99,16 @@ def main():
     input_path = Path(args.input)
     output_dir = Path(args.output)
 
-    chunks = json.loads(input_path.read_text(encoding="utf-8"))
-    grouped = chunk_by_domain(chunks)
-    write_chunks(grouped, output_dir)
+    try:
+        chunks = json.loads(input_path.read_text(encoding="utf-8"))
+        grouped = chunk_by_domain(chunks)
+        write_chunks(grouped, output_dir)
+        logging.info(f"Script finished successfully: split_large_json_files.py")  # Log success
+        print(f"[✅] Split into {len(grouped)} domain file(s) → {output_dir}")
+    except Exception as e:
+        logging.error(f"Script failed: split_large_json_files.py, Error: {str(e)}")  # Log failure
+        print(f"[❌] Error: {str(e)}")  # Print the error to the console
 
-    print(f"[✅] Split into {len(grouped)} domain file(s) → {output_dir}")
-
+# Main entry point of the script
 if __name__ == "__main__":
     main()
