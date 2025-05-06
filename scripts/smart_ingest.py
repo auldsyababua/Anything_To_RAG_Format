@@ -6,6 +6,11 @@
 # Ingests mixed file types (.pdf, .md, .json, .html, .epub)
 # Normalizes, chunks, and standardizes output structure
 # Final result written to FULL_OUTPUT_FILE (e.g. full/unified.json)
+# Also enriches chunks with:
+# - chunk_id (unique per doc chunk)
+# - chunk_offset (token-level offset)
+# - token_count (estimated tokens)
+# - headings and section_path (from markdown)
 # ----------------------------------------
 
 import json
@@ -18,224 +23,155 @@ import os
 from pathlib import Path
 from nltk.tokenize import sent_tokenize
 
-# Import logging setup from config.py
-from config import setup_logging
+# Tokenizer (you can swap in tiktoken if available)
+def count_tokens(text):
+    return len(text.split())
 
-# Call the setup function to configure logging
+# Config and logging setup
+from config import setup_logging, FULL_OUTPUT_FILE
 setup_logging()
-
-# Now you can use logging throughout the script
 import logging
 
-# Ensure sentence tokenizer is downloaded
 nltk.download('punkt', quiet=True)
 
-# ----------------------------------------
-# Load config from project root
-# ----------------------------------------
-sys.path.append(str(Path(__file__).resolve().parents[1]))
-from config import (
-    INGESTION_SOURCE,
-    FULL_OUTPUT_FILE,
-    TARGET_TOKENS,
-    OVERLAP_TOKENS
-)
-
-# ----------------------------------------
-# Utility: Normalize filenames into safe doc_ids
-# ----------------------------------------
-def normalize_filename(name: str) -> str:
-    import unicodedata
-    name = unicodedata.normalize("NFKD", name)
-    name = name.encode("ascii", "ignore").decode("ascii")
-    name = name.lower()
-    return re.sub(r"[^a-z0-9]+", "_", name).strip("_")
-
-# ----------------------------------------
-# Utility: Normalize and clean text
-# ----------------------------------------
-def clean_text(text: str) -> str:
+def clean_text(text):
     text = html.unescape(text)
-    text = text.replace('\u00ad', '').replace('\xa0', ' ').replace('\n', ' ')
-    return re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'<[^>]+>', '', text)
+    text = re.sub(r'!\[[^\]]*\]\([^)]*\)', '', text)  # remove markdown images
+    return text.strip()
 
 # ----------------------------------------
-# Sentence window chunking with token overlap
+# Chunk plain text using sentence tokenizer
+# Adds metadata: chunk_id, offset, token_count
 # ----------------------------------------
-def chunk_sentences(text: str, target_tokens: int, overlap_tokens: int, meta: dict) -> list:
+def chunk_sentences(text, doc_id):
     sentences = sent_tokenize(text)
     chunks = []
     current_chunk = []
-    current_tokens = 0
+    token_acc = 0
+    chunk_index = 0
+    word_offset = 0
+    for sent in sentences:
+        token_len = count_tokens(sent)
+        if token_acc + token_len > 1000:
+            chunk_text = ' '.join(current_chunk).strip()
+            if len(chunk_text) > 40:
+                chunks.append({
+                    "content": chunk_text,
+                    "metadata": {
+                        "doc_id": doc_id,
+                        "chunk_id": f"{doc_id}_{chunk_index:04d}",
+                        "chunk_offset": word_offset,
+                        "token_count": count_tokens(chunk_text),
+                        "headings": [],
+                        "section_path": ""
+                    }
+                })
+                chunk_index += 1
+                word_offset += token_acc
+            current_chunk = [sent]
+            token_acc = token_len
+        else:
+            current_chunk.append(sent)
+            token_acc += token_len
 
-    for sentence in sentences:
-        tokens = len(sentence.split())
-        if current_tokens + tokens > target_tokens:
-            chunks.append({
-                "source": meta["source_path"],
-                "content": ' '.join(current_chunk),
-                "metadata": meta
-            })
-            # Backtrack for overlap
-            overlap = []
-            total = 0
-            for sent in reversed(current_chunk):
-                stokens = len(sent.split())
-                if total + stokens <= overlap_tokens:
-                    overlap.insert(0, sent)
-                    total += stokens
-                else:
-                    break
-            current_chunk = overlap.copy()
-            current_tokens = total
-        current_chunk.append(sentence)
-        current_tokens += tokens
-
-    if current_chunk:
+    # last chunk
+    chunk_text = ' '.join(current_chunk).strip()
+    if len(chunk_text) > 40:
         chunks.append({
-            "source": meta["source_path"],
-            "content": ' '.join(current_chunk),
-            "metadata": meta
+            "content": chunk_text,
+            "metadata": {
+                "doc_id": doc_id,
+                "chunk_id": f"{doc_id}_{chunk_index:04d}",
+                "chunk_offset": word_offset,
+                "token_count": count_tokens(chunk_text),
+                "headings": [],
+                "section_path": ""
+            }
         })
 
     return chunks
 
 # ----------------------------------------
-# Paragraph window chunking for Markdown files
+# Chunk markdown text respecting headings
+# Preserves section structure and injects metadata
 # ----------------------------------------
-def chunk_markdown(text: str, window_size: int, overlap: int, meta: dict) -> list:
-    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+def chunk_markdown(text, doc_id):
+    lines = text.splitlines()
     chunks = []
+    buffer = []
+    current_heading = ""
+    section_path = []
+    chunk_index = 0
+    word_offset = 0
 
-    if len(paragraphs) < window_size:
+    def flush():
+        nonlocal chunk_index, word_offset
+        if not buffer:
+            return
+        joined = " ".join(buffer).strip()
+        if len(joined) < 40:
+            return
         chunks.append({
-            "source": meta["source_path"],
-            "content": "\n\n".join(paragraphs),
-            "metadata": meta
+            "content": joined,
+            "metadata": {
+                "doc_id": doc_id,
+                "chunk_id": f"{doc_id}_{chunk_index:04d}",
+                "chunk_offset": word_offset,
+                "token_count": count_tokens(joined),
+                "headings": [current_heading] if current_heading else [],
+                "section_path": " > ".join(section_path)
+            }
         })
-        return chunks
+        chunk_index += 1
+        word_offset += count_tokens(joined)
+        buffer.clear()
 
-    for i in range(0, len(paragraphs) - window_size + 1, max(1, window_size - overlap)):
-        window = paragraphs[i:i + window_size]
-        chunks.append({
-            "source": meta["source_path"],
-            "content": "\n\n".join(window),
-            "metadata": meta
-        })
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith('#'):
+            flush()
+            current_heading = re.sub(r'#', '', line).strip()
+            section_path.append(current_heading)
+        else:
+            buffer.append(line)
 
+    flush()
     return chunks
 
 # ----------------------------------------
-# Normalize an entry from an Apify crawl .json
+# Detect file type and dispatch appropriate chunking logic
 # ----------------------------------------
-def normalize_json_entry(entry: dict, i: int, doc_id: str) -> dict:
-    # DEBUG: Show what's in each entry
-    if i < 3:  # Only print first few for sanity
-        print(f"[DEBUG] Entry {i}: keys = {list(entry.keys())}")
-        print(f"[DEBUG] Text preview: {entry.get('text', '')[:100]}")
-
-    raw_text = entry.get("text") or entry.get("content", "")
-    markdown = entry.get("markdown")
-    url = entry.get("url")
-
-    metadata = entry.get("metadata", {})
-    metadata["doc_id"] = doc_id
-    if url:
-        metadata["url"] = url
-
-    return {
-        "source": f"{doc_id}_{i}",
-        "content": clean_text(raw_text),
-        "markdown": markdown,
-        "metadata": metadata
-    }
-
-
-# ----------------------------------------
-# Format-aware dispatch per file type
-# ----------------------------------------
-def process_file(path: Path) -> list:
+def process_file(path: Path):
     ext = path.suffix.lower()
-    doc_id = normalize_filename(path.stem)
-    source_path = f"{INGESTION_SOURCE.name}/{doc_id}"
-    chunks = []
+    doc_id = path.stem
+    with open(path, "r", encoding="utf-8") as f:
+        raw_text = f.read()
 
-    if ext == ".pdf":
-        doc = fitz.open(path)
-        for i, page in enumerate(doc):
-            text = clean_text(page.get_text())
-            meta = {
-                "doc_id": doc_id,
-                "page_number": i + 1,
-                "source_file": doc_id,
-                "source_path": source_path
-            }
-            chunks.extend(chunk_sentences(text, TARGET_TOKENS, OVERLAP_TOKENS, meta))
+    raw_text = clean_text(raw_text)
 
-    elif ext == ".md":
-        text = path.read_text(encoding="utf-8")
-        meta = {
-            "doc_id": doc_id,
-            "source_file": doc_id,
-            "source_path": source_path
-        }
-        chunks.extend(chunk_markdown(text, TARGET_TOKENS, OVERLAP_TOKENS, meta))
-
-    elif ext == ".json":
-        data = json.loads(path.read_text(encoding="utf-8"))
-        for i, entry in enumerate(data):
-            chunk = normalize_json_entry(entry, i, doc_id)
-            if chunk["content"]:
-                chunks.append(chunk)
-
-    elif ext == ".html":
-        raw = path.read_text(encoding="utf-8")
-        text = clean_text(re.sub(r"<[^>]+>", "", raw))  # simple tag strip
-        meta = {
-            "doc_id": doc_id,
-            "source_file": doc_id,
-            "source_path": source_path
-        }
-        chunks.extend(chunk_sentences(text, TARGET_TOKENS, OVERLAP_TOKENS, meta))
-
-    elif ext == ".epub":
-        import ebooklib
-        from ebooklib import epub
-        from bs4 import BeautifulSoup
-
-        book = epub.read_epub(str(path))
-        for item in book.get_items_of_type(ebooklib.ITEM_DOCUMENT):
-            soup = BeautifulSoup(item.get_content(), "html.parser")
-            text = clean_text(soup.get_text())
-            meta = {
-                "doc_id": doc_id,
-                "source_file": doc_id,
-                "source_path": source_path
-            }
-            chunks.extend(chunk_sentences(text, TARGET_TOKENS, OVERLAP_TOKENS, meta))
-
-    return chunks
+    if ext == ".md":
+        return chunk_markdown(raw_text, doc_id)
+    else:
+        return chunk_sentences(raw_text, doc_id)
 
 # ----------------------------------------
-# Entry Point: Walk folder → process → save output
+# Entrypoint: iterate ingestion_source and run chunker
 # ----------------------------------------
 def main():
-    logging.info("Script started: smart_ingest.py")
-    try:
-        all_chunks = []
+    source_dir = Path("ingestion_source")
+    all_chunks = []
 
-        for path in INGESTION_SOURCE.rglob("*"):
-            if path.suffix.lower() in [".pdf", ".md", ".json", ".html", ".epub"]:
-                all_chunks.extend(process_file(path))
+    for file_path in source_dir.iterdir():
+        if file_path.suffix.lower() in [".md", ".txt", ".html"]:
+            logging.info(f"Processing {file_path.name}...")
+            chunks = process_file(file_path)
+            all_chunks.extend(chunks)
 
-        with open(FULL_OUTPUT_FILE, "w", encoding="utf-8") as f:
-            json.dump(all_chunks, f, indent=2, ensure_ascii=False)
-
-        logging.info("Script finished successfully: smart_ingest.py")
-        print(f"[✅] Ingestion complete. {len(all_chunks)} chunks → {FULL_OUTPUT_FILE}")
-    except Exception as e:
-        logging.error(f"Script failed: smart_ingest.py, Error: {str(e)}")
-        raise
+    with open(FULL_OUTPUT_FILE, "w", encoding="utf-8") as out_f:
+        json.dump(all_chunks, out_f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     main()
